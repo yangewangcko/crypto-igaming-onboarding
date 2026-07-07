@@ -3,168 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="meta.title">Merchant Onboarding — Checkout.com</title>
-  <meta name="description" data-i18n-attr="content" data-i18n="meta.description"
-        content="Onboarding guide for crypto and iGaming merchants at Checkout.com." />
-  <link rel="preconnect" href="https://flow.cko.solutions" />
+  <title>Merchant Onboarding — Checkout.com</title>
+  <meta name="description" content="Onboarding guide for crypto and iGaming merchants at Checkout.com — preparation, pay-in, payout, fraud management, and FAQ." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Checkout.com">
-        <!-- TODO: replace with official Checkout.com logo SVG in assets/ -->
-        <img src="assets/logo.svg" alt="Checkout.com" class="brand-logo" height="28" />
+      <a class="brand" href="index.html" aria-label="Checkout.com — home">
+        <img src="assets/logo-blue.svg" alt="Checkout.com" height="26" />
       </a>
-
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#steps" data-i18n="nav.steps">Onboarding steps</a>
-        <a href="#prepare" data-i18n="nav.prepare">Preparation</a>
-        <a href="#products" data-i18n="nav.products">Products</a>
-        <a href="#demo" data-i18n="nav.demo">Live demo</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="site-nav" id="nav" aria-label="Primary">
+        <a href="index.html" class="is-active" aria-current="page">Home</a>
+        <a href="preparation.html">Preparation</a>
+        <a href="payin.html">Payin</a>
+        <a href="payout.html">Payout</a>
+        <a href="fraud-management.html">Fraud Management</a>
+        <a href="faq.html">FAQ</a>
       </nav>
-
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button type="button" data-lang="en" class="lang-btn is-active">EN</button>
-        <span aria-hidden="true">/</span>
-        <button type="button" data-lang="zh" class="lang-btn">中文</button>
-      </div>
     </div>
   </header>
 
   <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="top">
+    <!-- Banner -->
+    <section class="banner">
       <div class="container">
-        <p class="eyebrow" data-i18n="hero.eyebrow">Merchant onboarding</p>
-        <h1 data-i18n="hero.title">Getting started with Checkout.com</h1>
-        <p class="lede" data-i18n="hero.lede">
-          A step-by-step guide for crypto and iGaming merchants — what to prepare,
-          how onboarding works, and which products fit your business.
+        <p class="eyebrow">Merchant Onboarding</p>
+        <h1>Onboarding with Checkout.com</h1>
+        <p class="lede">
+          Your guide to getting live with Checkout.com — what to prepare, how pay-in and
+          payout work, how we manage fraud, and answers to common questions. Built for
+          crypto and iGaming merchants.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#steps" data-i18n="hero.cta">See the steps</a>
-          <a class="btn btn-ghost" href="#demo" data-i18n="hero.cta2">Try the live demo</a>
+
+        <div class="team">
+          <p class="team-label">Your onboarding team — hover a card to copy the email</p>
+          <ul class="team-grid">
+            <li class="team-card">
+              <span class="tc-role">Sales Director</span>
+              <span class="tc-name">Esteban Sadurni</span>
+              <button type="button" class="tc-email" data-email="esteban.sadurni@checkout.com" aria-label="Copy Esteban Sadurni's email">
+                <span class="tc-email-text">esteban.sadurni@checkout.com</span>
+                <span class="tc-copy">Copy</span>
+              </button>
+            </li>
+            <li class="team-card">
+              <span class="tc-role">Solution Engineering Director</span>
+              <span class="tc-name">Tom Chesnoy</span>
+              <button type="button" class="tc-email" data-email="tom.chesnoy@checkout.com" aria-label="Copy Tom Chesnoy's email">
+                <span class="tc-email-text">tom.chesnoy@checkout.com</span>
+                <span class="tc-copy">Copy</span>
+              </button>
+            </li>
+            <li class="team-card">
+              <span class="tc-role">APAC Solution Engineering Manager</span>
+              <span class="tc-name">YanGe Wang</span>
+              <button type="button" class="tc-email" data-email="yange.wang@checkout.com" aria-label="Copy YanGe Wang's email">
+                <span class="tc-email-text">yange.wang@checkout.com</span>
+                <span class="tc-copy">Copy</span>
+              </button>
+            </li>
+            <li class="team-card">
+              <span class="tc-role">Implementation Engineering Manager</span>
+              <span class="tc-name">Tomer Horviz</span>
+              <button type="button" class="tc-email" data-email="Tomer.Horviz@checkout.com" aria-label="Copy Tomer Horviz's email">
+                <span class="tc-email-text">Tomer.Horviz@checkout.com</span>
+                <span class="tc-copy">Copy</span>
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ONBOARDING STEPS -->
-    <section class="section" id="steps">
+    <!-- Guide sections -->
+    <section class="section">
       <div class="container">
-        <h2 data-i18n="steps.title">Onboarding steps</h2>
-        <p class="section-lede" data-i18n="steps.lede">The end-to-end path from application to going live.</p>
-        <!-- PLACEHOLDER content — replace with Esteban's onboarding docs -->
-        <ol class="steps">
-          <li class="step">
-            <span class="step-num">1</span>
-            <h3 data-i18n="steps.s1.title">Apply &amp; submit KYC/KYB</h3>
-            <p data-i18n="steps.s1.body">Provide company details and complete Know-Your-Business verification.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">2</span>
-            <h3 data-i18n="steps.s2.title">Risk &amp; compliance review</h3>
-            <p data-i18n="steps.s2.body">Underwriting assesses your business model, licensing, and MCC.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">3</span>
-            <h3 data-i18n="steps.s3.title">Integration &amp; testing</h3>
-            <p data-i18n="steps.s3.body">Connect via API or Flow in sandbox, then validate test transactions.</p>
-          </li>
-          <li class="step">
-            <span class="step-num">4</span>
-            <h3 data-i18n="steps.s4.title">Go live</h3>
-            <p data-i18n="steps.s4.body">Move to production credentials and process live payments.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- PREPARATION -->
-    <section class="section section-alt" id="prepare">
-      <div class="container">
-        <h2 data-i18n="prepare.title">What to prepare</h2>
-        <p class="section-lede" data-i18n="prepare.lede">Have these ready to speed up onboarding.</p>
+        <h2>In this guide</h2>
+        <p class="lead">Five sections take you from first application to live processing.</p>
         <ul class="cards">
           <li class="card">
-            <h3 data-i18n="prepare.p1.title">Corporate documents</h3>
-            <p data-i18n="prepare.p1.body">Certificate of incorporation, ownership structure, director IDs.</p>
+            <h3><a href="preparation.html">1 · Preparation</a></h3>
+            <p>Documents, licensing, and information to gather before you apply.</p>
           </li>
           <li class="card">
-            <h3 data-i18n="prepare.p2.title">Licensing</h3>
-            <p data-i18n="prepare.p2.body">Relevant operating licenses for your jurisdiction and vertical.</p>
+            <h3><a href="payin.html">2 · Payin</a></h3>
+            <p>How to accept payments — integration options and supported methods.</p>
           </li>
           <li class="card">
-            <h3 data-i18n="prepare.p3.title">Processing history</h3>
-            <p data-i18n="prepare.p3.body">Recent statements and volumes, if you have a processing history.</p>
+            <h3><a href="payout.html">3 · Payout</a></h3>
+            <p>How to send funds to your customers and counterparties.</p>
+          </li>
+          <li class="card">
+            <h3><a href="fraud-management.html">4 · Fraud Management</a></h3>
+            <p>Tools and controls to protect your business and stay compliant.</p>
+          </li>
+          <li class="card">
+            <h3><a href="faq.html">5 · FAQ</a></h3>
+            <p>Answers to the questions merchants ask most during onboarding.</p>
           </li>
         </ul>
-        <!-- Inline vertical-specific notes (unified content model) -->
-        <aside class="note note-crypto">
-          <span class="note-tag" data-i18n="prepare.crypto.tag">Crypto (MCC 6051)</span>
-          <p data-i18n="prepare.crypto.body">VASP registration and proof of regulatory status where applicable.</p>
-        </aside>
-        <aside class="note note-igaming">
-          <span class="note-tag" data-i18n="prepare.igaming.tag">iGaming (MCC 7995)</span>
-          <p data-i18n="prepare.igaming.body">Gambling license(s) per operating market and responsible-gaming policy.</p>
-        </aside>
-      </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section class="section" id="products">
-      <div class="container">
-        <h2 data-i18n="products.title">Product types</h2>
-        <p class="section-lede" data-i18n="products.lede">Ways to accept and pay out with Checkout.com.</p>
-        <ul class="cards">
-          <li class="card">
-            <h3 data-i18n="products.p1.title">Flow &amp; Frames</h3>
-            <p data-i18n="products.p1.body">Drop-in, customisable payment components for the web.</p>
-          </li>
-          <li class="card">
-            <h3 data-i18n="products.p2.title">Payments API</h3>
-            <p data-i18n="products.p2.body">Full API control over cards, APMs, and 3DS.</p>
-          </li>
-          <li class="card">
-            <h3 data-i18n="products.p3.title">Payouts</h3>
-            <p data-i18n="products.p3.body">Send funds to cards and accounts, including AFT flows.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- INTERACTIVE DEMO -->
-    <section class="section section-alt" id="demo">
-      <div class="container">
-        <h2 data-i18n="demo.title">Live payment demo</h2>
-        <p class="section-lede" data-i18n="demo.lede">
-          Explore a real Flow payment experience — customise appearance, locale, and payment methods.
-        </p>
-        <div class="demo-frame">
-          <iframe
-            src="https://flow.cko.solutions/"
-            title="Checkout.com Flow customization playground"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-            allow="payment"></iframe>
-        </div>
-        <p class="demo-fallback">
-          <a href="https://flow.cko.solutions/" target="_blank" rel="noopener"
-             data-i18n="demo.fallback">Open the demo in a new tab</a>
-        </p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <img src="assets/logo.svg" alt="Checkout.com" height="22" />
-      <p data-i18n="footer.copy">© Checkout.com — Merchant onboarding guide.</p>
+      <img src="assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — Crypto &amp; iGaming merchant onboarding.</p>
     </div>
   </footer>
 
-  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

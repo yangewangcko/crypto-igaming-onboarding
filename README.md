@@ -1,40 +1,45 @@
 # Checkout.com — Merchant Onboarding Site
 
 Static, public onboarding guide for **crypto (MCC 6051)** and **iGaming (MCC 7995)** merchants.
-English by default with a **中文** toggle. Includes a live Flow payment demo embedded via iframe.
+English first; a **中文** version follows once the English content is approved.
 
 ## Stack
 Plain HTML/CSS/JS — no framework, no build step. Deploys to **GitHub Pages** on push to `main`.
 
-## Structure
+## Pages
 ```
-index.html          Page shell + sections (data-i18n keys)
-css/styles.css      Brand tokens + layout
-js/i18n.js          Language engine (EN/中文, localStorage)
-i18n/en.json        English strings
-i18n/zh.json        Chinese strings
-assets/             Logo + brand assets (see assets/README.md)
-.github/workflows/  GitHub Pages deploy
+index.html              Home — banner + onboarding team (hover to copy email)
+preparation.html        Documents, licensing, requirements
+payin.html              Accepting payments + live Flow demo (iframe)
+payout.html             Sending funds (card payouts / bank transfers)
+fraud-management.html   3DS, risk rules, monitoring
+faq.html                Common onboarding questions
 ```
 
-## Content model
-**Unified** — one set of onboarding content covering both verticals, with inline
-`crypto` / `iGaming` notes where requirements differ. See the `.note` blocks in `index.html`.
+## Files
+```
+css/styles.css   Brand tokens + layout
+js/main.js       Mobile nav toggle + team email copy-to-clipboard
+assets/          Logos (see assets/README.md)
+```
 
-> ⚠️ Section copy is **placeholder** pending Esteban's onboarding docs. Edit `i18n/*.json`
-> (both languages) to update text — the HTML holds only fallback English.
+The header/nav and footer are duplicated per page (self-contained, no JS dependency for
+navigation). The five nav items are stable; content is what changes per page.
+
+## Content status
+Section copy is **first-draft skeleton** with `Draft` notes marking where Esteban's detailed
+onboarding docs slot in. Edit the HTML directly.
 
 ## Local preview
 ```bash
-python3 -m http.server 8000   # then open http://localhost:8000
+python3 -m http.server 8000   # http://localhost:8000
 ```
-(Serve over HTTP, not `file://`, so `fetch()` for the i18n JSON works.)
 
 ## Deploy
 Push to `main`. In repo **Settings → Pages**, set Source = **GitHub Actions**.
 
 ## TODO before launch
-- [ ] Replace placeholder logo with official Checkout.com assets (`assets/README.md`)
-- [ ] Confirm brand hex values against brand guidelines
-- [ ] Replace placeholder section copy with Esteban's onboarding content (EN + 中文)
-- [ ] Confirm the Flow demo URL / any embed restrictions
+- [ ] Replace draft copy with Esteban's onboarding content
+- [ ] Confirm brand hex (`#006CFF`) against brand guidelines
+- [ ] Confirm the Flow demo embeds publicly (X-Frame-Options / CSP)
+- [ ] Approve English → build 中文 version

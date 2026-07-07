@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payin — Merchant Onboarding — Checkout.com</title>
+  <meta name="description" content="How to accept payments with Checkout.com: integration options, supported methods, and a live Flow demo." />
+  <link rel="preconnect" href="https://flow.cko.solutions" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Checkout.com — home">
+        <img src="assets/logo-blue.svg" alt="Checkout.com" height="26" />
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="site-nav" id="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="preparation.html">Preparation</a>
+        <a href="payin.html" class="is-active" aria-current="page">Payin</a>
+        <a href="payout.html">Payout</a>
+        <a href="fraud-management.html">Fraud Management</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> / Payin</p>
+        <h1>Payin</h1>
+        <p>Accept payments from your customers — choose the integration that fits your build.</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <h2>Integration options</h2>
+        <p class="lead">From drop-in components to full API control.</p>
+        <ul class="cards">
+          <li class="card">
+            <h3>Flow</h3>
+            <p>A drop-in, customisable payment component that renders cards and APMs with minimal code.</p>
+          </li>
+          <li class="card">
+            <h3>Frames</h3>
+            <p>Embed styled card fields directly in your checkout for a fully branded experience.</p>
+          </li>
+          <li class="card">
+            <h3>Payments API</h3>
+            <p>Full server-side control over cards, APMs, 3DS, captures, and refunds.</p>
+          </li>
+          <li class="card">
+            <h3>Hosted Payments Page</h3>
+            <p>Redirect to a Checkout.com-hosted page — the fastest way to start accepting payments.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Try the live demo</h2>
+        <p class="lead">Explore a real Flow payment experience — customise appearance, locale, and payment methods.</p>
+        <div class="demo-frame">
+          <iframe src="https://flow.cko.solutions/" title="Checkout.com Flow customization playground"
+                  loading="lazy" referrerpolicy="no-referrer" allow="payment"></iframe>
+        </div>
+        <p style="margin-top:14px;font-size:15px;">
+          <a href="https://flow.cko.solutions/" target="_blank" rel="noopener">Open the demo in a new tab</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Supported payment methods</h2>
+        <aside class="note note-draft">
+          <span class="note-tag">Draft</span>
+          <p>Card networks and APM availability by region pending Esteban's onboarding docs. Vertical-specific eligibility (crypto / iGaming) to be listed here.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — Crypto &amp; iGaming merchant onboarding.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
