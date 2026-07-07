@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "title": "Merchant Onboarding — Checkout.com",
+    "description": "Onboarding guide for crypto and iGaming merchants at Checkout.com."
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "steps": "Onboarding steps",
+    "prepare": "Preparation",
+    "products": "Products",
+    "demo": "Live demo"
+  },
+  "hero": {
+    "eyebrow": "Merchant onboarding",
+    "title": "Getting started with Checkout.com",
+    "lede": "A step-by-step guide for crypto and iGaming merchants — what to prepare, how onboarding works, and which products fit your business.",
+    "cta": "See the steps",
+    "cta2": "Try the live demo"
+  },
+  "steps": {
+    "title": "Onboarding steps",
+    "lede": "The end-to-end path from application to going live.",
+    "s1": { "title": "Apply & submit KYC/KYB", "body": "Provide company details and complete Know-Your-Business verification." },
+    "s2": { "title": "Risk & compliance review", "body": "Underwriting assesses your business model, licensing, and MCC." },
+    "s3": { "title": "Integration & testing", "body": "Connect via API or Flow in sandbox, then validate test transactions." },
+    "s4": { "title": "Go live", "body": "Move to production credentials and process live payments." }
+  },
+  "prepare": {
+    "title": "What to prepare",
+    "lede": "Have these ready to speed up onboarding.",
+    "p1": { "title": "Corporate documents", "body": "Certificate of incorporation, ownership structure, director IDs." },
+    "p2": { "title": "Licensing", "body": "Relevant operating licenses for your jurisdiction and vertical." },
+    "p3": { "title": "Processing history", "body": "Recent statements and volumes, if you have a processing history." },
+    "crypto": { "tag": "Crypto (MCC 6051)", "body": "VASP registration and proof of regulatory status where applicable." },
+    "igaming": { "tag": "iGaming (MCC 7995)", "body": "Gambling license(s) per operating market and responsible-gaming policy." }
+  },
+  "products": {
+    "title": "Product types",
+    "lede": "Ways to accept and pay out with Checkout.com.",
+    "p1": { "title": "Flow & Frames", "body": "Drop-in, customisable payment components for the web." },
+    "p2": { "title": "Payments API", "body": "Full API control over cards, APMs, and 3DS." },
+    "p3": { "title": "Payouts", "body": "Send funds to cards and accounts, including AFT flows." }
+  },
+  "demo": {
+    "title": "Live payment demo",
+    "lede": "Explore a real Flow payment experience — customise appearance, locale, and payment methods.",
+    "fallback": "Open the demo in a new tab"
+  },
+  "footer": {
+    "copy": "© Checkout.com — Merchant onboarding guide."
+  }
+}
