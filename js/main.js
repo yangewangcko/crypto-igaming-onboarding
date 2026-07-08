@@ -25,9 +25,9 @@
     });
   }
 
-  document.querySelectorAll(".tc-email").forEach(function (btn) {
+  document.querySelectorAll(".tc-email, .copy-chip").forEach(function (btn) {
     var email = btn.getAttribute("data-email") || btn.textContent.trim();
-    var label = btn.querySelector(".tc-copy");
+    var label = btn.querySelector(".tc-copy, .cc-copy");
     var original = label ? label.textContent : "Copy";
     btn.addEventListener("click", function () {
       copy(email).then(function () {

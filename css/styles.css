@@ -131,6 +131,25 @@ h1, h2, h3 { color: var(--cko-ink); }
 .faq details[open] summary { color: var(--cko-blue); }
 .faq details > p { margin: 0 0 16px; color: var(--cko-muted); }
 
+/* Screenshots in step content */
+.screenshot { display: block; max-width: 560px; width: 100%; height: auto; margin: 14px 0 4px;
+  border: 1px solid var(--cko-border); border-radius: 10px; box-shadow: var(--shadow); background: #fff; }
+.screenshot.wide { max-width: 820px; }
+.figcap { font-size: 13px; color: var(--cko-muted); margin: 0 0 4px; }
+
+/* Inline copy chip (standalone, always visible) */
+.copy-chip { display: inline-flex; align-items: center; gap: 8px; vertical-align: middle;
+  border: 1px solid var(--cko-border); background: var(--cko-bg-alt); border-radius: 8px;
+  padding: 5px 10px; font: inherit; font-size: 14px; color: var(--cko-text); cursor: pointer; }
+.copy-chip:hover { border-color: var(--cko-blue); }
+.cc-copy { font-size: 12px; font-weight: 600; color: var(--cko-blue); background: #fff;
+  border: 1px solid var(--cko-border); border-radius: 6px; padding: 2px 7px; }
+.copy-chip.copied .cc-copy { color: #0a7d3c; border-color: #0a7d3c; }
+
+/* Ordered step list with rich content */
+.steps.detailed .step { grid-template-columns: 40px 1fr; }
+.steps.detailed .step p { margin: 0 0 4px; }
+
 /* Demo iframe */
 .demo-frame { border: 1px solid var(--cko-border); border-radius: var(--radius); overflow: hidden;
   background: #fff; box-shadow: var(--shadow); }

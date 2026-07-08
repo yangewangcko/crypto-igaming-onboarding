@@ -12,7 +12,7 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Checkout.com — home">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
         <img src="assets/logo-blue.svg" alt="Checkout.com" height="26" />
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -23,6 +23,7 @@
         <a href="payout.html">Payout</a>
         <a href="fraud-management.html">Fraud Management</a>
         <a href="faq.html">FAQ</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API Reference ↗</a>
       </nav>
     </div>
   </header>
@@ -32,62 +33,87 @@
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Home</a> / Preparation</p>
         <h1>Preparation</h1>
-        <p>Gather these before you apply — having them ready keeps onboarding fast.</p>
+        <p>Two things to get in place before you start building: your PCI DSS compliance and a sandbox account.</p>
       </div>
     </div>
 
+    <!-- Section 1: PCI DSS -->
     <section class="section">
       <div class="container">
-        <h2>What to prepare</h2>
-        <p class="lead">The core information and documents we'll ask for.</p>
+        <h2>PCI DSS compliance</h2>
+        <p class="lead">
+          All merchants that accept payment cards are required to comply with the Payment Card
+          Industry Data Security Standards (PCI DSS). You can review and validate your PCI DSS
+          compliance with a Self-Assessment Questionnaire (SAQ).
+        </p>
+        <p>The type of SAQ you need to provide depends on your integration method. If you use:</p>
         <ul class="cards">
           <li class="card">
-            <h3>Corporate documents</h3>
-            <p>Certificate of incorporation, ownership structure, and director / UBO identification.</p>
+            <h3>SAQ A</h3>
+            <p>Flow, Hosted Payments Page (HPP), Payment Links, or our Mobile SDKs.</p>
           </li>
           <li class="card">
-            <h3>Licensing</h3>
-            <p>Operating licences relevant to your jurisdiction and vertical.</p>
-          </li>
-          <li class="card">
-            <h3>Processing history</h3>
-            <p>Recent statements and monthly volumes, if you have prior processing.</p>
-          </li>
-          <li class="card">
-            <h3>Business &amp; website details</h3>
-            <p>Live URL, business model, target markets, and settlement currency.</p>
+            <h3>SAQ D</h3>
+            <p>Our Full Card API with your own integration platform.</p>
           </li>
         </ul>
       </div>
     </section>
 
+    <!-- Section 2: Sandbox Account Creation -->
     <section class="section">
       <div class="container">
-        <h2>Vertical-specific requirements</h2>
-        <aside class="note note-crypto">
-          <span class="note-tag">Crypto — MCC 6051</span>
-          <p>VASP registration and proof of regulatory status where applicable to your operating markets.</p>
-        </aside>
-        <aside class="note note-igaming">
-          <span class="note-tag">iGaming — MCC 7995</span>
-          <p>Gambling licence(s) per operating market and your responsible-gaming policy.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2>Onboarding at a glance</h2>
-        <ol class="steps">
-          <li class="step"><span class="step-num">1</span><div><h3>Apply &amp; submit KYC / KYB</h3><p>Provide company details and complete Know-Your-Business verification.</p></div></li>
-          <li class="step"><span class="step-num">2</span><div><h3>Risk &amp; compliance review</h3><p>Underwriting assesses your business model, licensing, and MCC.</p></div></li>
-          <li class="step"><span class="step-num">3</span><div><h3>Integration &amp; testing</h3><p>Connect via API or Flow in sandbox, then validate test transactions.</p></div></li>
-          <li class="step"><span class="step-num">4</span><div><h3>Go live</h3><p>Move to production credentials and start processing.</p></div></li>
+        <h2>Sandbox account creation</h2>
+        <p class="lead">Set up a test account so you can build and validate before going live.</p>
+        <ol class="steps detailed">
+          <li class="step">
+            <span class="step-num">1</span>
+            <div>
+              <h3>Create a test account</h3>
+              <p>Use a company email address to create your test account at
+                <a href="https://www.checkout.com/get-test-account" target="_blank" rel="noopener">checkout.com/get-test-account</a>.</p>
+              <img class="screenshot" src="assets/sandbox_account.png"
+                   alt="Create test account form with name, job title, company, email, location, and processing volume fields" loading="lazy" />
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <div>
+              <h3>Check your email</h3>
+              <p>You will receive a welcome email from Okta with the activation link.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <div>
+              <h3>Activate &amp; set your password</h3>
+              <p>Activate your account and reset your password.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <div>
+              <h3>Log in to the Dashboard</h3>
+              <p>Now you can log in to the Dashboard at
+                <a href="https://dashboard.sandbox.checkout.com/" target="_blank" rel="noopener">dashboard.sandbox.checkout.com</a>.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">5</span>
+            <div>
+              <h3>Invite your colleagues</h3>
+              <p>Once you have activated and logged in as the Owner user, go to
+                <strong>Settings → User permissions</strong> and click <strong>+ New User</strong> to invite more colleagues.</p>
+              <img class="screenshot wide" src="assets/add_user.png"
+                   alt="Dashboard Roles and permissions page showing the Settings gear and the New user button" loading="lazy" />
+            </div>
+          </li>
         </ol>
-        <aside class="note note-draft">
-          <span class="note-tag">Draft</span>
-          <p>Detailed document checklists and requirements pending Esteban's onboarding docs.</p>
-        </aside>
+        <p style="margin-top:24px;">Account-related issues:
+          <button type="button" class="copy-chip" data-email="support@checkout.com" aria-label="Copy support@checkout.com">
+            <span>support@checkout.com</span><span class="cc-copy">Copy</span>
+          </button>
+        </p>
       </div>
     </section>
   </main>
