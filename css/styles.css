@@ -170,8 +170,16 @@ h1, h2, h3 { color: var(--cko-ink); }
 .doc-section + .doc-section { border-top: 1px solid var(--cko-border); padding-top: 40px; }
 .doc-section h2 { font-size: clamp(22px, 3vw, 30px); margin: 0 0 14px; }
 .doc-section h3 { font-size: 19px; margin: 28px 0 8px; }
+.doc-section h4 { font-size: 16px; margin: 22px 0 6px; color: var(--cko-ink); }
 .doc-section p { max-width: 760px; }
+.doc-section ul, .doc-section ol { max-width: 760px; }
+.doc-section li { margin-bottom: 5px; }
+.doc-section ul ul, .doc-section ol ol, .doc-section ol ul { margin-top: 5px; }
 .subsection { scroll-margin-top: 84px; }
+/* Ordered endpoint/process steps */
+ol.proc { padding-left: 20px; }
+ol.proc > li { margin-bottom: 14px; }
+ol.proc > li::marker { font-weight: 700; color: var(--cko-blue); }
 
 /* Downloadable / diagram */
 .diagram { display: block; width: 100%; height: auto; border: 1px solid var(--cko-border);

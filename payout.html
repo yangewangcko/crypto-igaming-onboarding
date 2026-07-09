@@ -34,48 +34,191 @@
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Home</a> / Payout</p>
         <h1>Payout</h1>
-        <p>Send funds to your customers and counterparties, quickly and securely.</p>
+        <p>Send money directly to recipients' cards in real time — the types of card payout and how to integrate.</p>
       </div>
     </div>
 
-    <section class="section">
-      <div class="container">
-        <h2>Payout options</h2>
-        <p class="lead">Move money out via cards or bank rails.</p>
-        <ul class="cards">
-          <li class="card">
-            <h3>Card payouts (AFT)</h3>
-            <p>Push funds directly to a cardholder using Account Funding Transactions.</p>
+    <div class="doc-layout">
+      <!-- In-page navigation -->
+      <nav class="doc-toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ul>
+          <li><a href="#card-payouts">Card Payouts</a></li>
+          <li><a href="#types">Types of card payouts</a>
+            <ul>
+              <li><a href="#card-payout">Card Payout</a></li>
+              <li><a href="#apple-pay-card-payout">Apple Pay Card Payout</a></li>
+            </ul>
           </li>
-          <li class="card">
-            <h3>Bank transfers</h3>
-            <p>Send to bank accounts through supported local and international rails.</p>
-          </li>
-          <li class="card">
-            <h3>Payouts API</h3>
-            <p>Automate disbursements programmatically with full status reporting.</p>
+          <li><a href="#integration-guide">Integration guide</a>
+            <ul>
+              <li><a href="#key-scopes">Preparation: Key scopes</a></li>
+              <li><a href="#process">Process</a></li>
+            </ul>
           </li>
         </ul>
-      </div>
-    </section>
+      </nav>
 
-    <section class="section">
-      <div class="container">
-        <h2>Vertical notes</h2>
-        <aside class="note note-crypto">
-          <span class="note-tag">Crypto — MCC 6051</span>
-          <p>AFT eligibility and issuer support vary by region — confirm coverage for your payout corridors.</p>
-        </aside>
-        <aside class="note note-igaming">
-          <span class="note-tag">iGaming — MCC 7995</span>
-          <p>Player withdrawals via card payout depend on issuer and market rules.</p>
-        </aside>
-        <aside class="note note-draft">
-          <span class="note-tag">Draft</span>
-          <p>Corridor coverage, limits, and settlement timelines pending Esteban's onboarding docs.</p>
-        </aside>
+      <div class="doc-content">
+        <!-- Card Payouts -->
+        <section class="doc-section" id="card-payouts">
+          <h2>Card Payouts</h2>
+          <p>The <a href="https://www.checkout.com/docs/payments/request-payouts/card-payouts" target="_blank" rel="noopener">Card Payouts</a>
+            solution enables you to send money directly to recipients' cards in real-time, using direct integrations with
+            Visa Direct and Mastercard MoneySend, which support both domestic and cross-border payouts.</p>
+          <p>Card Payouts is available for businesses incorporated in:</p>
+          <ul>
+            <li>European Economic Area (EEA)</li>
+            <li>Singapore</li>
+            <li>United Arab Emirates</li>
+            <li>United Kingdom (UK)</li>
+            <li>United States of America (USA)</li>
+          </ul>
+        </section>
+
+        <!-- Types -->
+        <section class="doc-section" id="types">
+          <h2>Types of card payouts</h2>
+          <p>There are two types of card payouts.</p>
+
+          <div class="subsection" id="card-payout">
+            <h3>Card Payout</h3>
+            <p>You can perform card payouts for the following Funds Transfer Type categories:</p>
+            <ul>
+              <li>Money transfers</li>
+              <li>Non-money transfers</li>
+              <li>Online gambling</li>
+            </ul>
+          </div>
+
+          <div class="subsection" id="apple-pay-card-payout">
+            <h3>Apple Pay Card Payout</h3>
+            <p>The <a href="https://www.checkout.com/docs/payments/request-payouts/card-payouts/request-an-apple-pay-card-payout" target="_blank" rel="noopener">Apple Pay Card Payout</a>
+              solution enables you to perform payouts to eligible cards with Apple Pay on the following platforms and minimum OS versions:</p>
+            <ul>
+              <li>iOS 17.0</li>
+              <li>iPadOS 17.0</li>
+              <li>Mac Catalyst 17.0</li>
+              <li>visionOS 1.0</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Integration guide -->
+        <section class="doc-section" id="integration-guide">
+          <h2>Integration guide</h2>
+          <p>The payout integration guide for merchants.</p>
+
+          <!-- Key scopes -->
+          <div class="subsection" id="key-scopes">
+            <h3>Preparation: Key scopes</h3>
+            <p>CKO has assigned key scopes (<code>vault:card-metadata</code>, <code>balances</code>, <code>forex</code>)
+              to API Keys in sandbox.</p>
+            <p><strong>Merchant:</strong> For the production environment, please raise a support ticket via the Dashboard or send an email to
+              <button type="button" class="copy-chip" data-email="support@checkout.com" aria-label="Copy support@checkout.com"><span>support@checkout.com</span><span class="cc-copy">Copy</span></button>
+              with the Key IDs of the Private API Keys and/or OAuth Keys (for forex) you are using, and ask the team to add the above scopes to the keys.</p>
+          </div>
+
+          <!-- Process -->
+          <div class="subsection" id="process">
+            <h3>Process</h3>
+            <ol class="proc">
+              <li>
+                <strong>Endpoint:</strong> <code>POST /metadata/card</code>
+                <ul>
+                  <li><code>format = card_payouts</code></li>
+                </ul>
+                In the response, check eligibility based on the different fund transfer types:
+                <ul>
+                  <li>Visa: <code>money_transfer</code> (FT/LA), <code>non_money_transfer</code> (FD)</li>
+                  <li>Mastercard: <code>money_transfer</code> (C52), <code>non_money_transfer</code> (C55)</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Endpoint:</strong> <code>GET /balances</code><br />
+                Check if you have enough funds. Amount = Available + Pending + Operational.
+              </li>
+              <li>
+                <strong>(If needed) Endpoint:</strong> <code>GET /forex/rates</code>
+                <ul>
+                  <li><code>product = card_payouts</code></li>
+                </ul>
+                Update frequency:
+                <ul>
+                  <li>Visa: Daily @ midnight UTC</li>
+                  <li>Mastercard: Daily @ 22:00 UTC</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Endpoint:</strong> <code>POST /payments</code>
+                <ul>
+                  <li><code>source.type = currency_account</code></li>
+                </ul>
+              </li>
+            </ol>
+
+            <h4>Required fields</h4>
+            <ul>
+              <li><strong>Currency Account ID</strong> (<code>ca_</code>) — used as the <code>source.id</code> field in the
+                <code>/payments</code> endpoint. Found in the Dashboard (Entity level) → Business account → Balances. Click the
+                <strong>…</strong> icon on the Currency Account to open the Account details popup.</li>
+              <li><strong>Entity ID</strong> (<code>ent_</code>) — used in the <code>/balances</code> endpoint. Found in the
+                Dashboard (Entity level) → Settings (upper-right corner) → Account details.</li>
+            </ul>
+
+            <p><strong>In the <code>/payments</code> endpoint:</strong></p>
+            <ul>
+              <li><code>instruction.funds_transfer_type</code>:
+                <ul>
+                  <li>FD/FT/LA for Visa</li>
+                  <li>C52/C55 for Mastercard</li>
+                </ul>
+                <span class="muted">Value may be different in sandbox vs production.</span>
+              </li>
+              <li><code>processing_channel_id</code> — found in the Dashboard → Settings (upper-right corner) → Settings →
+                Business settings → Processing channels.</li>
+              <li><code>destination.account_holder.type = individual</code></li>
+              <li><code>sender</code> is required for Money Transfer (FT/LA/C52) — the sender is the user:
+                <ul>
+                  <li><code>sender.type = individual</code></li>
+                  <li><code>sender.first_name</code> = user's first name</li>
+                  <li><code>sender.last_name</code> = user's last name</li>
+                  <li><code>sender.address</code> = user's billing address</li>
+                  <li><code>sender.reference</code></li>
+                  <li><code>sender.reference_type = other</code></li>
+                  <li><code>sender.source_of_funds = debit</code></li>
+                </ul>
+              </li>
+            </ul>
+
+            <h4>Domestic vs cross-border</h4>
+            <p class="muted">All countries are enabled in the sandbox environment, but please refer to the countries list we provide for the production environment.</p>
+            <ul>
+              <li>A Card Payout is <strong>Domestic</strong> when the entity's country of incorporation is the same as the recipient issuer country.</li>
+              <li>A Card Payout is <strong>Cross-border</strong> when the entity's country of incorporation is NOT the same as the recipient issuer country.</li>
+            </ul>
+            <p><strong>[Production] Internal validation:</strong></p>
+            <ol>
+              <li><strong>Non-money transfer</strong> (sender is the merchant): check if the recipient issuer country is part of the destination countries list (see country list Excel — to be shared by the CKO team).</li>
+              <li><strong>Money transfer</strong> (sender is the user): check if the recipient issuer country is part of the destination countries list, and check if the sender billing country is part of the sender countries list (see country list Excel — to be shared by the CKO team).</li>
+            </ol>
+
+            <h4>Currencies</h4>
+            <p>There are two key currencies to be aware of.</p>
+            <a href="assets/payouts_currencies.png" target="_blank" rel="noopener">
+              <img class="screenshot wide" src="assets/payouts_currencies.png"
+                   alt="Currency types: Holding currencies (GBP, EUR, USD) and Processing currencies (100+ accepted)" loading="lazy" />
+            </a>
+
+            <h4>Limits</h4>
+            <a href="assets/payouts_limits.png" target="_blank" rel="noopener">
+              <img class="screenshot wide" src="assets/payouts_limits.png"
+                   alt="Payout limits by scheme, domestic vs cross-border, single transaction amount, and 1/7/30-day velocity amounts" loading="lazy" />
+            </a>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
