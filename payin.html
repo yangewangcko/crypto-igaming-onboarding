@@ -35,58 +35,183 @@
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Home</a> / Payin</p>
         <h1>Payin</h1>
-        <p>Accept payments from your customers — choose the integration that fits your build.</p>
+        <p>Accept payments from your customers — the payment lifecycle, integration options, and the tools around them.</p>
       </div>
     </div>
 
-    <section class="section">
-      <div class="container">
-        <h2>Integration options</h2>
-        <p class="lead">From drop-in components to full API control.</p>
-        <ul class="cards">
-          <li class="card">
-            <h3>Flow</h3>
-            <p>A drop-in, customisable payment component that renders cards and APMs with minimal code.</p>
+    <div class="doc-layout">
+      <!-- In-page navigation -->
+      <nav class="doc-toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ul>
+          <li><a href="#payment-lifecycle">Payment Lifecycle</a></li>
+          <li><a href="#integration">Integration</a>
+            <ul>
+              <li><a href="#flow-remember-me">Flow &amp; Remember Me</a></li>
+              <li><a href="#full-card-api">Full Card API</a></li>
+              <li><a href="#mobile-sdks">Mobile SDKs</a></li>
+              <li><a href="#amount-format">Amount Format</a></li>
+              <li><a href="#ani">Account Name Inquiry (ANI)</a></li>
+              <li><a href="#good-practice">Good Practice</a></li>
+              <li><a href="#afts">Account Funding Transactions (AFTs)</a></li>
+              <li><a href="#apms">APMs</a></li>
+            </ul>
           </li>
-          <li class="card">
-            <h3>Frames</h3>
-            <p>Embed styled card fields directly in your checkout for a fully branded experience.</p>
-          </li>
-          <li class="card">
-            <h3>Payments API</h3>
-            <p>Full server-side control over cards, APMs, 3DS, captures, and refunds.</p>
-          </li>
-          <li class="card">
-            <h3>Hosted Payments Page</h3>
-            <p>Redirect to a Checkout.com-hosted page — the fastest way to start accepting payments.</p>
-          </li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#webhook">Webhook</a></li>
+          <li><a href="#response-code">Response Code</a></li>
         </ul>
-      </div>
-    </section>
+      </nav>
 
-    <section class="section">
-      <div class="container">
-        <h2>Try the live demo</h2>
-        <p class="lead">Explore a real Flow payment experience — customise appearance, locale, and payment methods.</p>
-        <div class="demo-frame">
-          <iframe src="https://flow.cko.solutions/" title="Checkout.com Flow customization playground"
-                  loading="lazy" referrerpolicy="no-referrer" allow="payment"></iframe>
-        </div>
-        <p style="margin-top:14px;font-size:15px;">
-          <a href="https://flow.cko.solutions/" target="_blank" rel="noopener">Open the demo in a new tab</a>
-        </p>
-      </div>
-    </section>
+      <div class="doc-content">
+        <!-- Payment Lifecycle -->
+        <section class="doc-section" id="payment-lifecycle">
+          <h2>Payment Lifecycle</h2>
+          <p>A payment moves through fraud checks, authentication, authorization, and capture. This diagram shows the full flow and where a payment can be declined, voided, or flagged.</p>
+          <a href="assets/payment-lifecycle.jpg" target="_blank" rel="noopener">
+            <img class="diagram" src="assets/payment-lifecycle.jpg"
+                 alt="Payment lifecycle: Create a payment → FD pre-auth check → 3DS authentication → authorization → FD post-auth check → captured, with decline, void, and flagged branches" loading="lazy" />
+          </a>
+        </section>
 
-    <section class="section">
-      <div class="container">
-        <h2>Supported payment methods</h2>
-        <aside class="note note-draft">
-          <span class="note-tag">Draft</span>
-          <p>Card networks and APM availability by region pending Esteban's onboarding docs. Vertical-specific eligibility (crypto / iGaming) to be listed here.</p>
-        </aside>
+        <!-- Integration -->
+        <section class="doc-section" id="integration">
+          <h2>Integration</h2>
+          <p>Choose the integration that fits your PCI compliance level and your build.</p>
+
+          <div class="subsection" id="flow-remember-me">
+            <h3>Flow &amp; Remember Me</h3>
+            <p><a href="https://www.checkout.com/docs/payments/accept-payments/accept-a-payment-on-your-website" target="_blank" rel="noopener">Flow</a>
+              is a pre-built, customizable payment user interface that you can embed directly into your website.
+              It enables you to accept payments using Checkout.com's global network of payment methods with a single integration.</p>
+
+            <p style="margin-top:18px;font-weight:600;">Try the live demo</p>
+            <div class="demo-frame">
+              <iframe src="https://flow.cko.solutions/" title="Checkout.com Flow customization playground"
+                      loading="lazy" referrerpolicy="no-referrer" allow="payment"></iframe>
+            </div>
+            <p style="margin-top:14px;">
+              <a class="btn btn-primary" href="https://www.checkout.com/docs/assets/downloads/flow-template.zip" download>Download sample code (.zip)</a>
+              &nbsp;
+              <a href="https://flow.cko.solutions/" target="_blank" rel="noopener">Open the demo in a new tab</a>
+            </p>
+
+            <p style="margin-top:24px;">The <a href="https://www.checkout.com/docs/payments/accept-payments/accept-a-payment-on-your-website/extend-your-flow-integration/enable-remember-me" target="_blank" rel="noopener">Remember Me</a>
+              feature enables customers to save their card details during checkout. The next time the customer shops at any
+              merchant that has Remember Me enabled, we display their saved card details.</p>
+          </div>
+
+          <div class="subsection" id="full-card-api">
+            <h3>Full Card API</h3>
+            <p>If your level of PCI compliance is SAQ D, you can request a payment using the
+              <a href="https://www.checkout.com/docs/payments/accept-payments/accept-a-payment-using-the-payments-api#Request_a_payment_with_full_card_details" target="_blank" rel="noopener">card's full details</a>.</p>
+            <p>Checkout.com provides a collection of
+              <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">APIs</a>
+              that enable you to process and manage payments.</p>
+          </div>
+
+          <div class="subsection" id="mobile-sdks">
+            <h3>Mobile SDKs</h3>
+            <p>Checkout.com offers back-end and
+              <a href="https://www.checkout.com/docs/developer-resources/sdks" target="_blank" rel="noopener">mobile SDKs</a>
+              for Android and iOS.</p>
+          </div>
+
+          <div class="subsection" id="amount-format">
+            <h3>Amount Format</h3>
+            <p>Our payment gateway determines the charge amount by assessing the value and the currency contained in the
+              charge request. The amount field in a payment request must be a
+              <strong>non-zero positive integer — no decimals</strong>. Details
+              <a href="https://www.checkout.com/docs/payments/accept-payments/format-the-amount-value" target="_blank" rel="noopener">here</a>.</p>
+          </div>
+
+          <div class="subsection" id="ani">
+            <h3>Account Name Inquiry (ANI)</h3>
+            <p>To reduce fraud risk, you can validate a cardholder's name against the name held by their issuing bank using an
+              <a href="https://www.checkout.com/docs/payments/authenticate-payments/verify-a-card#Request_an_Account_Name_Inquiry" target="_blank" rel="noopener">Account Name Inquiry (ANI)</a>.
+              ANI is a card verification service that works independently of the financial transaction.</p>
+          </div>
+
+          <div class="subsection" id="good-practice">
+            <h3>Good Practice</h3>
+            <p>To improve acceptance rates and enhance risk control, Checkout.com requires merchants to provide the following
+              information when submitting payment and/or payment session requests:</p>
+            <ul class="field-list">
+              <li>cardholder name</li>
+              <li><code>customer.email</code></li>
+              <li><code>customer.name</code></li>
+              <li><code>customer.phone</code> <span class="muted">(good to have)</span></li>
+              <li><code>billing.address.country</code></li>
+              <li><code>billing.address.address_line1</code></li>
+              <li><code>billing.address.city</code></li>
+              <li><code>billing.address.state</code> <span class="muted">(for US)</span></li>
+              <li><code>billing.address.zip</code> <span class="muted">(good to have)</span></li>
+              <li><code>risk.device.network.ipv4</code> or <code>risk.device.network.ipv6</code></li>
+              <li><code>risk.device_session_id</code></li>
+            </ul>
+          </div>
+
+          <div class="subsection" id="afts">
+            <h3>Account Funding Transactions (AFTs)</h3>
+            <p>Card schemes (Visa &amp; Mastercard) have mandates to ensure that acquirers/merchants with specific MCCs are
+              migrated to AFTs. CKO will help merchants to apply for AFT enablement with schemes. To flag transactions as AFTs,
+              please follow the docs
+              <a href="https://www.checkout.com/docs/payments/manage-payments/perform-an-account-funding-transaction" target="_blank" rel="noopener">here</a>.</p>
+          </div>
+
+          <div class="subsection" id="apms">
+            <h3>APMs</h3>
+            <p>Checkout.com provides a wide range of global Alternative Payment Methods (APMs), such as Apple Pay, Google Pay,
+              and local payment methods, etc. Please contact our team for more information.</p>
+          </div>
+        </section>
+
+        <!-- Dashboard -->
+        <section class="doc-section" id="dashboard">
+          <h2>Dashboard</h2>
+          <p>The <a href="https://www.checkout.com/docs/business-operations/use-the-dashboard" target="_blank" rel="noopener">Dashboard</a>
+            is your single source for monitoring and analyzing all your payments. Get your key performance indicators, payment
+            history, details and analytics — all in one place. You can also manage Disputes, Reports, Settlements, and Risk
+            strategies from the Dashboard.</p>
+        </section>
+
+        <!-- Webhook -->
+        <section class="doc-section" id="webhook">
+          <h2>Webhook</h2>
+          <p>Checkout.com can send you automated notifications when events related to your account occur. You can receive
+            notifications using
+            <a href="https://www.checkout.com/docs/developer-resources/event-notifications/receive-webhooks" target="_blank" rel="noopener">Webhooks</a>
+            or
+            <a href="https://www.checkout.com/docs/developer-resources/event-notifications/receive-events-in-eventbridge" target="_blank" rel="noopener">EventBridge</a>
+            for all event types.</p>
+        </section>
+
+        <!-- Response Code -->
+        <section class="doc-section" id="response-code">
+          <h2>Response Code</h2>
+          <p>A <a href="https://www.checkout.com/docs/developer-resources/codes/api-response-codes" target="_blank" rel="noopener">Response Code</a>
+            is a five-digit numeric code that indicates the status of the request. Here are the four types:</p>
+          <div class="rc-list">
+            <div class="rc approved">
+              <span class="rc-code">10xxx</span>
+              <div><span class="rc-title">Approved</span><p>The request was successful.</p></div>
+            </div>
+            <div class="rc soft">
+              <span class="rc-code">20xxx</span>
+              <div><span class="rc-title">Soft decline</span><p>The request was declined, usually by the issuer bank, though subsequent attempts may be successful.</p></div>
+            </div>
+            <div class="rc hard">
+              <span class="rc-code">30xxx</span>
+              <div><span class="rc-title">Hard decline</span><p>The request was declined. Most hard declines require the issuer or cardholder to rectify the outstanding issue(s) before a subsequent attempt can be made.</p></div>
+            </div>
+            <div class="rc risk">
+              <span class="rc-code">40xxx</span>
+              <div><span class="rc-title">Risk responses</span><p>The request triggered a risk response. The status of the response will depend on the action specified in your risk settings. Declined by Fraud Detection.</p></div>
+            </div>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">

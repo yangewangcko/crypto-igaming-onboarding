@@ -42,4 +42,35 @@
       });
     });
   });
+
+  // --- In-page TOC scroll-spy ---
+  var toc = document.querySelector(".doc-toc");
+  if (toc && "IntersectionObserver" in window) {
+    var links = {};
+    toc.querySelectorAll("a[href^='#']").forEach(function (a) {
+      links[a.getAttribute("href").slice(1)] = a;
+    });
+    var targets = Object.keys(links)
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+    var visible = new Set();
+    function highlight() {
+      var current = null;
+      // topmost visible section wins
+      targets.forEach(function (el) {
+        if (visible.has(el.id) && (!current || el.offsetTop < current.offsetTop)) current = el;
+      });
+      Object.keys(links).forEach(function (id) {
+        links[id].classList.toggle("active", current && id === current.id);
+      });
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) visible.add(e.target.id);
+        else visible.delete(e.target.id);
+      });
+      highlight();
+    }, { rootMargin: "-80px 0px -70% 0px", threshold: 0 });
+    targets.forEach(function (el) { obs.observe(el); });
+  }
 })();
