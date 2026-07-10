@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fraud Management — Merchant Onboarding — Checkout.com</title>
-  <meta name="description" content="Fraud and risk controls at Checkout.com: 3DS, risk rules, and monitoring for crypto and iGaming merchants." />
+  <meta name="description" content="Fraud and risk controls at Checkout.com: 3DS, identity anchoring, device intelligence, metadata, and disputes for crypto and iGaming merchants." />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -34,52 +34,166 @@
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Home</a> / Fraud Management</p>
         <h1>Fraud Management</h1>
-        <p>Protect your business and your customers while keeping conversion high.</p>
+        <p>Fraudsters specifically target new merchants during their first 30–90 days, assuming security models are not yet fully calibrated. Follow these pillars to protect your processing.</p>
       </div>
     </div>
 
-    <section class="section">
-      <div class="container">
-        <h2>Controls &amp; tools</h2>
-        <p class="lead">Layered defences you can tune to your risk appetite.</p>
-        <ul class="cards">
-          <li class="card">
-            <h3>3D Secure</h3>
-            <p>Authenticate cardholders and shift liability where the scheme supports it.</p>
-          </li>
-          <li class="card">
-            <h3>Risk rules</h3>
-            <p>Configure rules to flag, block, or challenge transactions by signal.</p>
-          </li>
-          <li class="card">
-            <h3>Monitoring &amp; reporting</h3>
-            <p>Track decline reasons, fraud rates, and chargeback performance.</p>
-          </li>
-          <li class="card">
-            <h3>Data enrichment</h3>
-            <p>Pass device and customer signals to improve authorisation and risk decisions.</p>
-          </li>
+    <div class="doc-layout">
+      <!-- In-page navigation -->
+      <nav class="doc-toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ul>
+          <li><a href="#three-ds">Mandatory 3D Secure (3DS)</a></li>
+          <li><a href="#i2p">Identity-to-Payment (I2P) Anchoring</a></li>
+          <li><a href="#device-intelligence">Device Intelligence</a></li>
+          <li><a href="#cold-start">The "Cold Start" Risk Model</a></li>
+          <li><a href="#ratio-protection">Proactive Ratio Protection</a></li>
+          <li><a href="#metadata">Metadata</a></li>
+          <li><a href="#fraud-detection">Fraud Detection</a></li>
+          <li><a href="#disputes">Disputes Management</a></li>
         </ul>
-      </div>
-    </section>
+      </nav>
 
-    <section class="section">
-      <div class="container">
-        <h2>Vertical notes</h2>
-        <aside class="note note-crypto">
-          <span class="note-tag">Crypto — MCC 6051</span>
-          <p>3DS liability-shift coverage differs by region — confirm gaps for your key markets.</p>
-        </aside>
-        <aside class="note note-igaming">
-          <span class="note-tag">iGaming — MCC 7995</span>
-          <p>Strong authentication and responsible-gaming checks may apply per market.</p>
-        </aside>
-        <aside class="note note-draft">
-          <span class="note-tag">Draft</span>
-          <p>Recommended rule sets and 3DS configuration guidance pending Esteban's onboarding docs.</p>
-        </aside>
+      <div class="doc-content">
+        <!-- 1. Mandatory 3D Secure -->
+        <section class="doc-section" id="three-ds">
+          <h2>Mandatory 3D Secure (3DS)</h2>
+          <p><strong>Policy:</strong> All transactions must be processed with
+            <a href="https://www.checkout.com/docs/payments/authenticate-payments/3d-secure" target="_blank" rel="noopener">3D Secure</a>.
+            3DS adds an authentication layer that helps verify the cardholder's identity with the issuing bank. It is your
+            primary line of defense against unauthorized card use and provides significant protection against fraud-related
+            chargebacks.</p>
+        </section>
+
+        <!-- 2. Identity-to-Payment Anchoring -->
+        <section class="doc-section" id="i2p">
+          <h2>Identity-to-Payment (I2P) Anchoring</h2>
+          <p>Standard authorization responses do not return the cardholder's name. This allows fraudsters to pass KYC as
+            "User A" but pay with a card belonging to "User B."</p>
+
+          <div class="subsection">
+            <h3>Account Name Inquiry (ANI)</h3>
+            <p>Use ANI to proactively send the KYC-verified Legal Name to the bank for verification.</p>
+          </div>
+
+          <div class="subsection">
+            <h3>Execution</h3>
+            <p>ANI can only be performed on a $0 Authorization. We recommend you implement this step as a mandatory part of
+              the transaction flow (e.g., during card onboarding or immediately before the first purchase) to ensure identity
+              alignment before funds are captured.</p>
+          </div>
+
+          <div class="subsection">
+            <h3>Hard Block Policy</h3>
+            <p>If the bank returns a "No Match" result for the name, the transaction should be automatically declined.</p>
+          </div>
+        </section>
+
+        <!-- 3. Device Intelligence -->
+        <section class="doc-section" id="device-intelligence">
+          <h2>Device Intelligence</h2>
+          <div class="subsection">
+            <h3>Risk SDK (Mandatory)</h3>
+            <p>Regardless of your integration method, you must integrate the
+              <a href="https://www.checkout.com/docs/developer-resources/sdks/risk-sdks" target="_blank" rel="noopener">Checkout Risk SDKs</a>
+              on your front-end. It is the only way to track physical hardware IDs and spot professional "fraud farms" using
+              multiple accounts on one device.</p>
+          </div>
+        </section>
+
+        <!-- 4. The "Cold Start" Risk Model -->
+        <section class="doc-section" id="cold-start">
+          <h2>The "Cold Start" Risk Model</h2>
+          <p>Protect your launch with temporary "Speed-Bumps" for new accounts:</p>
+          <ul>
+            <li><strong>Tiered Limits:</strong> Keep transaction caps low (e.g., $100) for a user's first week.</li>
+            <li><strong>Withdrawal Holds:</strong> For high-liquidity assets (like crypto), implement a 24–48 hour hold on
+              payouts for new users. This allows time for Early Warning (TC40) reports to arrive before the funds are gone.</li>
+          </ul>
+        </section>
+
+        <!-- 5. Proactive Ratio Protection -->
+        <section class="doc-section" id="ratio-protection">
+          <h2>Proactive Ratio Protection</h2>
+          <div class="subsection">
+            <h3>Rapid Dispute Resolution (RDR)</h3>
+            <p>Set automated rules to refund disputes instantly. This kills the dispute before it hits your chargeback ratio.</p>
+          </div>
+          <div class="subsection">
+            <h3>Webhook Automation</h3>
+            <p>Configure your system to freeze accounts and cancel pending orders the moment a
+              <a href="https://www.checkout.com/docs/developer-resources/event-notifications/event-types/fraud_reported" target="_blank" rel="noopener">Fraud Reported</a>
+              (TC40 or SAFE) webhook is received.</p>
+          </div>
+        </section>
+
+        <!-- 6. Metadata -->
+        <section class="doc-section" id="metadata">
+          <h2>Metadata</h2>
+          <p>We recommend passing additional
+            <a href="https://api-reference.checkout.com/#operation/requestAPaymentOrPayout!path=0/metadata&amp;t=request" target="_blank" rel="noopener">Metadata</a>
+            in your payment requests. This allows us and our risk team to better monitor your traffic and identify more fraud
+            and cross-check against broader network patterns on our end.</p>
+          <p>Key fields that would provide the most impact include:</p>
+
+          <div class="subsection">
+            <h3>Identity &amp; KYC Insights</h3>
+            <ul>
+              <li><code>kyc_level</code>: (e.g., Tier_1 vs Tier_2) To flag high-value attempts from unverified users.</li>
+              <li><code>user_age</code>: (Integer) The physical age of the person (from their ID), critical for spotting
+                "Generational Fraud" patterns, such as senior exploitation (scams) or young/mule activity.</li>
+              <li><code>account_age</code>: (In days) Crucial for spotting "hit and run" attacks.</li>
+              <li><code>is_first_purchase</code>: (Boolean) Should remain true until the user has a successfully captured
+                payment. This ensures high scrutiny remains even if initial attempts fail or decline.</li>
+              <li><code>document_type</code>: Helps us identify if a specific forged document type is being cycled through the
+                platform.</li>
+            </ul>
+          </div>
+
+          <div class="subsection">
+            <h3>Account Integrity</h3>
+            <ul>
+              <li><code>email/phone_verified</code>: (Boolean) Fraudsters often use unverified or VoIP details.</li>
+              <li><code>total_successful_orders</code>: Helps us "Green-light" your loyal, low-risk customers.</li>
+              <li><code>is_trusted_customer</code>: (Boolean) Your internal flag for high-reputation users. We recommend
+                setting this only after a user has 3+ successful payments over a 45-day window with consistent device/IP
+                signatures.</li>
+            </ul>
+          </div>
+
+          <div class="subsection">
+            <h3>Transaction Context</h3>
+            <ul>
+              <li><code>asset_type</code>: (e.g., BTC, USDT) Helps us monitor liquidity-driven fraud trends.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 7. Fraud Detection -->
+        <section class="doc-section" id="fraud-detection">
+          <h2>Fraud Detection</h2>
+          <p>Our <a href="https://www.checkout.com/docs/business-operations/prevent-fraud" target="_blank" rel="noopener">Fraud Detection</a>
+            solution gives you the power to control what happens to the payments you process. Payments will be assessed against
+            the risk assessment rules that you set in the Dashboard → Fraud - Strategy page.</p>
+          <p>Contact us for a demo session.</p>
+        </section>
+
+        <!-- 8. Disputes Management -->
+        <section class="doc-section" id="disputes">
+          <h2>Disputes Management</h2>
+          <p>A <a href="https://www.checkout.com/docs/business-operations/manage-disputes" target="_blank" rel="noopener">dispute</a>,
+            or chargeback, occurs when a customer questions the validity of a transaction and contacts their bank (the issuer)
+            to get a refund.</p>
+          <p>The dispute process begins when a transaction is questioned by the cardholder. It then goes through a number of
+            stages before it is resolved. Refer to the diagram.</p>
+          <a href="assets/disputes_flow.png" target="_blank" rel="noopener">
+            <img class="diagram" src="assets/disputes_flow.png"
+                 alt="Dispute lifecycle: a transaction is questioned by the cardholder and moves through the stages of the dispute process until it is resolved" loading="lazy" />
+          </a>
+          <p>You can easily manage disputes from Dashboard → Disputes.</p>
+        </section>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer class="site-footer">
