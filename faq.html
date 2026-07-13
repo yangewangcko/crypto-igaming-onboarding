@@ -89,6 +89,30 @@
             </ul>
             <p>See <a href="https://www.checkout.com/docs/business-operations/retrieve-reports" target="_blank" rel="noopener">Retrieve reports</a> for setup instructions.</p>
           </details>
+          <details>
+            <summary>Can I set up recurring payments?</summary>
+            <p>Yes. You can charge a customer on a recurring basis using their stored card details — see
+              <a href="https://www.checkout.com/docs/payments/accept-payments/pay-with-stored-card-details/recurring-payments-with-stored-card-details" target="_blank" rel="noopener">Recurring payments with stored card details</a>.</p>
+          </details>
+          <details>
+            <summary>What should be on my pre-go-live checklist?</summary>
+            <p>Before you switch on live traffic, confirm your technical integration and configuration are production-ready:</p>
+            <ul>
+              <li><strong>Activate the Dashboard:</strong> ensure your Dashboard is activated and the right people on your team have access.</li>
+              <li><strong>Swap API keys and endpoints:</strong> move your environment configuration from sandbox to production. Replace all test public and secret keys with the live production keys generated in the Dashboard.</li>
+              <li><strong>Configure live webhooks:</strong> recreate all system-critical webhooks in your live environment. Make sure your server listens for live events such as <code>card_verified</code>, <code>payment_approved</code>, <code>payment_declined</code>, <code>payment_captured</code>, <code>payment_refunded</code>, and <code>payment_voided</code>, and that your live endpoints are secured and authenticated.</li>
+              <li><strong>Enable 3D Secure (3DS) and fraud rules:</strong> review your 3DS rules in the Dashboard. Confirm Strong Customer Authentication (SCA) is enabled and correctly configured for regions where it is mandatory (such as Europe) to avoid immediate issuer declines.</li>
+              <li><strong>Configure reporting methods:</strong> set up your reporting channels (Dashboard, API, and SFTP) for financial reconciliation.</li>
+              <li><strong>Ensure good data health:</strong> confirm sufficient information is passed on each request for strong data quality, and comply with AFT mandate requirements where applicable (optional).</li>
+              <li><strong>Run a production smoke test:</strong>
+                <ol>
+                  <li><strong>Process a real transaction.</strong> Buy a low-value live item using a real personal or corporate card. Do not use sandbox cards — they fail instantly in production.</li>
+                  <li><strong>Verify the webhook response.</strong> Monitor your backend logs and confirm your system captures the live event and moves the order status from "Pending" to "Paid".</li>
+                  <li><strong>Trigger a partial or full refund.</strong> Initiate a refund from your platform's backend or the Dashboard to confirm the reverse payment loop works end to end.</li>
+                </ol>
+              </li>
+            </ul>
+          </details>
         </div>
       </div>
     </section>
