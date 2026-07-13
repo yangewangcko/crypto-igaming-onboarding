@@ -42,34 +42,54 @@
       <div class="container">
         <div class="faq">
           <details>
-            <summary>How long does onboarding take?</summary>
-            <p>Timelines depend on your vertical, licensing, and how quickly documents are provided. Your onboarding team will share an estimate after the initial review.</p>
+            <summary>How can I check a transaction's status and why it failed?</summary>
+            <p>You can find this in two places — the Dashboard and the API.</p>
+            <p><strong>Dashboard:</strong> open the Payments page and search by payment ID. Hover over the
+              <a href="https://www.checkout.com/docs/developer-resources/codes/api-response-codes" target="_blank" rel="noopener">response code</a>
+              to see the status, and open the payment details page for the full breakdown.</p>
+            <p><strong>API:</strong> the same response code is returned in the API response for every payment request.</p>
           </details>
           <details>
-            <summary>Which documents do I need to provide?</summary>
-            <p>See the <a href="preparation.html">Preparation</a> page for the core checklist. Crypto (MCC 6051) and iGaming (MCC 7995) merchants have additional licensing requirements.</p>
+            <summary>How should my finance team reconcile with Checkout.com?</summary>
+            <p>Follow our
+              <a href="https://www.checkout.com/docs/funds-management/reconcile-with-checkout-com" target="_blank" rel="noopener">reconciliation guide</a>,
+              which walks through matching settlements and payouts against your processed payments.</p>
           </details>
           <details>
-            <summary>Can I test before going live?</summary>
-            <p>Yes — you integrate and validate in sandbox first. Try the <a href="payin.html">live Flow demo</a> to see the payment experience.</p>
+            <summary>How do I submit a support ticket?</summary>
+            <p>Sign in to the Dashboard, click the question-mark icon in the upper-right corner, and select
+              <strong>Request support</strong>.</p>
           </details>
           <details>
-            <summary>Which integration should I choose?</summary>
-            <p>Flow or the Hosted Payments Page are fastest to launch; the Payments API gives full control. See <a href="payin.html">Payin</a> for the options.</p>
+            <summary>How do I create API keys?</summary>
+            <p>Sign in to the Dashboard, select the <strong>Developers</strong> icon in the top navigation bar, open the
+              <strong>Keys</strong> tab, and select <strong>Create a new key</strong>. See the
+              <a href="https://www.checkout.com/docs/business-operations/use-the-dashboard/developers" target="_blank" rel="noopener">Developers documentation</a>
+              for details.</p>
           </details>
           <details>
-            <summary>Do you support payouts to my customers?</summary>
-            <p>Yes — via card payouts (AFT) and bank transfers. Coverage varies by region; see <a href="payout.html">Payout</a>.</p>
+            <summary>How do I set up single sign-on (SSO)?</summary>
+            <p>Configure SSO for your team from the Dashboard — follow the
+              <a href="https://www.checkout.com/docs/business-operations/use-the-dashboard/single-sign-on" target="_blank" rel="noopener">SSO setup guide</a>.</p>
           </details>
           <details>
-            <summary>Who do I contact during onboarding?</summary>
-            <p>Your onboarding team is listed on the <a href="index.html">home page</a> — hover a card to copy the email.</p>
+            <summary>How can I view and update my business details?</summary>
+            <p>You can view and update your business details directly in the Dashboard. See
+              <a href="https://www.checkout.com/docs/business-operations/use-the-dashboard/manage-business-details" target="_blank" rel="noopener">Manage business details</a>.</p>
+          </details>
+          <details>
+            <summary>How can I retrieve reports?</summary>
+            <p>Checkout.com provides a range of reports to support your business operations and help you gain insight. You can
+              retrieve them in four ways:</p>
+            <ul>
+              <li>Generate and download reports in the Dashboard, on demand or on a schedule.</li>
+              <li>Retrieve reports programmatically using the Reports API.</li>
+              <li>Access reports over Secure File Transfer Protocol (SFTP).</li>
+              <li>Receive scheduled reports via webhooks.</li>
+            </ul>
+            <p>See <a href="https://www.checkout.com/docs/business-operations/retrieve-reports" target="_blank" rel="noopener">Retrieve reports</a> for setup instructions.</p>
           </details>
         </div>
-        <aside class="note note-draft" style="margin-top:24px;">
-          <span class="note-tag">Draft</span>
-          <p>Additional vertical-specific questions pending Esteban's onboarding docs.</p>
-        </aside>
       </div>
     </section>
   </main>
