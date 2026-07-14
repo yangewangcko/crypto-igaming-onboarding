@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industry News — Merchant Onboarding — Checkout.com</title>
+  <meta name="description" content="Regulatory and scheme updates that matter to crypto and iGaming merchants — MiCA authorisation and the card scheme Account Funding Transaction (AFT) mandate." />
+  <link rel="stylesheet" href="css/styles.css?v=3" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
+        <img src="assets/logo-blue.svg" alt="Checkout.com" height="26" />
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="site-nav" id="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="preparation.html">Preparation</a>
+        <a href="payin.html">Payin</a>
+        <a href="payout.html">Payout</a>
+        <a href="fraud-management.html">Fraud Management</a>
+        <a href="faq.html">FAQ</a>
+        <a href="industry-news.html" class="is-active" aria-current="page">Industry News</a>
+        <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">Documentation ↗</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API Reference ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">Home</a> / Industry News</p>
+        <h1>Industry News</h1>
+        <p>Regulatory and card scheme changes that affect how crypto and iGaming merchants onboard and process
+          payments. The items below are illustrative examples — confirm current dates and requirements with your
+          onboarding team before acting.</p>
+      </div>
+    </div>
+
+    <div class="doc-layout">
+      <!-- In-page navigation -->
+      <nav class="doc-toc" aria-label="On this page">
+        <p class="toc-title">On this page</p>
+        <ul>
+          <li><a href="#mica">MiCA authorisation for crypto</a></li>
+          <li><a href="#aft-mandate">Card scheme AFT mandate</a></li>
+        </ul>
+      </nav>
+
+      <div class="doc-content">
+        <!-- MiCA -->
+        <section class="doc-section" id="mica">
+          <p class="eyebrow">Regulation · EU</p>
+          <h2>MiCA authorisation requirement for crypto merchants</h2>
+          <div class="note">
+            <span class="note-tag">Crypto</span>
+            <p>The EU's Markets in Crypto-Assets Regulation (MiCA) introduces a single licensing regime for
+              crypto-asset businesses across the EEA.</p>
+          </div>
+          <p>MiCA is the European Union's comprehensive framework for regulating crypto-assets and the firms that
+            service them. It replaces the previous patchwork of national regimes with one harmonised set of rules.</p>
+          <h3>What's changing</h3>
+          <ul>
+            <li>Rules for stablecoins — asset-referenced tokens (ARTs) and e-money tokens (EMTs) — applied from
+              <strong>30 June 2024</strong>.</li>
+            <li>Authorisation and conduct requirements for Crypto-Asset Service Providers (CASPs) applied from
+              <strong>30 December 2024</strong>.</li>
+            <li>A transitional ("grandfathering") window lets firms already operating under national law continue
+              until they are authorised — up to <strong>1 July 2026</strong>, though individual member states may
+              shorten this.</li>
+          </ul>
+          <h3>What it means for you</h3>
+          <p>If you offer crypto services to customers in the EEA, you will need to hold — or be actively pursuing —
+            CASP authorisation from a national competent authority. Expect authorisation status, licensed entity, and
+            regulated jurisdictions to form part of onboarding due diligence. Have your licence details ready when you
+            apply. See <a href="preparation.html">Preparation</a> for the documents to gather.</p>
+          <p class="muted">Source: European Securities and Markets Authority (ESMA) —
+            <a href="https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica" target="_blank" rel="noopener">Markets in Crypto-Assets Regulation (MiCA) ↗</a></p>
+        </section>
+
+        <!-- AFT mandate -->
+        <section class="doc-section" id="aft-mandate">
+          <p class="eyebrow">Card schemes · Global</p>
+          <h2>Account Funding Transaction (AFT) mandate</h2>
+          <div class="note note-igaming">
+            <span class="note-tag">Crypto &amp; iGaming</span>
+            <p>Visa and Mastercard require payments that fund an account or wallet to be identified as Account
+              Funding Transactions and carry enhanced sender and recipient data.</p>
+          </div>
+          <p>An Account Funding Transaction (AFT) is a card payment whose purpose is to load funds into an account,
+            wallet, or balance — for example buying crypto, topping up an e-wallet, or making a gambling deposit.
+            The card schemes now require these to be flagged and enriched so the money movement is transparent.</p>
+          <h3>What's changing</h3>
+          <ul>
+            <li>Transactions in affected categories — including MCC <strong>6051</strong> (quasi-cash / crypto) and
+              MCC <strong>7995</strong> (gambling) — must be submitted as AFTs rather than standard purchases.</li>
+            <li>Merchants must pass additional data on the request, including the sender's name, address, and funding
+              account reference, plus recipient details where required.</li>
+            <li>Both schemes are rolling the requirement out in stages; incomplete or mis-flagged transactions risk
+              higher decline rates and non-compliance fees.</li>
+          </ul>
+          <h3>What it means for you</h3>
+          <p>Make sure your integration flags qualifying payments as AFTs and supplies the mandated data fields.
+            Checkout.com supports AFT processing — confirming these fields during integration protects your
+            authorisation rates. See <a href="payin.html">Payin</a> for integration details and the
+            <a href="faq.html">FAQ</a> pre-go-live checklist for data-quality guidance.</p>
+          <p class="muted">Source: Checkout.com documentation —
+            <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">Account Funding Transactions ↗</a></p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — Crypto &amp; iGaming merchant onboarding.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
