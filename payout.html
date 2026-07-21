@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Payout — Merchant Onboarding — Checkout.com</title>
   <meta name="description" content="How to send funds with Checkout.com Payouts: card payouts, account transfers, and AFT flows." />
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -13,7 +16,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
-        <img src="assets/logo-blue.svg" alt="Checkout.com" height="26" />
+        <img src="assets/logo.svg" alt="Checkout.com" height="26" />
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
       <nav class="site-nav" id="nav" aria-label="Primary">
@@ -55,6 +58,11 @@
             <ul>
               <li><a href="#key-scopes">Preparation: Key scopes</a></li>
               <li><a href="#process">Process</a></li>
+              <li><a href="#required-fields">Required fields</a></li>
+              <li><a href="#domestic-vs-cross-border">Domestic vs cross-border</a></li>
+              <li><a href="#internal-validation">[Production] Internal validation</a></li>
+              <li><a href="#currencies">Currencies</a></li>
+              <li><a href="#limits">Limits</a></li>
             </ul>
           </li>
         </ul>
@@ -82,7 +90,7 @@
           <h2>Types of card payouts</h2>
           <p>There are two types of card payouts.</p>
 
-          <div class="subsection" id="card-payout">
+          <div class="subsection box" id="card-payout">
             <h3>Card Payout</h3>
             <p>You can perform <a href="https://www.checkout.com/docs/payments/request-payouts/card-payouts/request-a-card-payout" target="_blank" rel="noopener">Card Payouts</a> for the following Funds Transfer Type categories:</p>
             <ul>
@@ -92,7 +100,7 @@
             </ul>
           </div>
 
-          <div class="subsection" id="apple-pay-card-payout">
+          <div class="subsection box" id="apple-pay-card-payout">
             <h3>Apple Pay Card Payout</h3>
             <p>The <a href="https://www.checkout.com/docs/payments/request-payouts/card-payouts/request-an-apple-pay-card-payout" target="_blank" rel="noopener">Apple Pay Card Payout</a>
               solution enables you to perform payouts to eligible cards with Apple Pay on the following platforms and minimum OS versions:</p>
@@ -111,7 +119,7 @@
           <p>The payout integration guide for merchants.</p>
 
           <!-- Key scopes -->
-          <div class="subsection" id="key-scopes">
+          <div class="subsection box" id="key-scopes">
             <h3>Preparation: Key scopes</h3>
             <p>CKO has assigned key scopes (<code>vault:card-metadata</code>, <code>balances</code>, <code>forex</code>)
               to API Keys in sandbox.</p>
@@ -121,7 +129,7 @@
           </div>
 
           <!-- Process -->
-          <div class="subsection" id="process">
+          <div class="subsection box" id="process">
             <h3>Process</h3>
             <ol class="proc">
               <li>
@@ -157,8 +165,11 @@
                 </ul>
               </li>
             </ol>
+          </div>
 
-            <h4>Required fields</h4>
+          <!-- Required fields -->
+          <div class="subsection box" id="required-fields">
+            <h3>Required fields</h3>
             <ul>
               <li><strong>Currency Account ID</strong> (<code>ca_</code>) — used as the <code>source.id</code> field in the
                 <code>/payments</code> endpoint. Found in the Dashboard (Entity level) → Business account → Balances. Click the
@@ -191,31 +202,143 @@
                 </ul>
               </li>
             </ul>
+          </div>
 
-            <h4>Domestic vs cross-border</h4>
+          <!-- Domestic vs cross-border -->
+          <div class="subsection box" id="domestic-vs-cross-border">
+            <h3>Domestic vs cross-border</h3>
             <p class="muted">All countries are enabled in the sandbox environment, but please refer to the countries list we provide for the production environment.</p>
             <ul>
               <li>A Card Payout is <strong>Domestic</strong> when the entity's country of incorporation is the same as the recipient issuer country.</li>
               <li>A Card Payout is <strong>Cross-border</strong> when the entity's country of incorporation is NOT the same as the recipient issuer country.</li>
             </ul>
-            <p><strong>[Production] Internal validation:</strong></p>
+          </div>
+
+          <!-- [Production] Internal validation -->
+          <div class="subsection box" id="internal-validation">
+            <h3>[Production] Internal validation</h3>
             <ol>
               <li><strong>Non-money transfer</strong> (sender is the merchant): check if the recipient issuer country is part of the destination countries list (see country list Excel — to be shared by the CKO team).</li>
               <li><strong>Money transfer</strong> (sender is the user): check if the recipient issuer country is part of the destination countries list, and check if the sender billing country is part of the sender countries list (see country list Excel — to be shared by the CKO team).</li>
             </ol>
+          </div>
 
-            <h4>Currencies</h4>
+          <!-- Currencies -->
+          <div class="subsection box" id="currencies">
+            <h3>Currencies</h3>
             <p>There are two key currencies to be aware of.</p>
-            <a href="assets/payouts_currencies.png" target="_blank" rel="noopener">
-              <img class="screenshot wide" src="assets/payouts_currencies.png"
-                   alt="Currency types: Holding currencies (GBP, EUR, USD) and Processing currencies (100+ accepted)" loading="lazy" />
-            </a>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">Currency Type</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Accepted Currencies</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Holding Currencies</th>
+                  <td>Currencies accepted by Checkout.com from the merchant to fund Pay to Card transactions. These will be the currencies of a merchant's currency account held with Checkout.com</td>
+                  <td>Checkout.com currently accepts GBP, EUR, USD</td>
+                </tr>
+                <tr>
+                  <th scope="row">Processing Currencies</th>
+                  <td>Currencies that card schemes can make available to recipients through the local issuing bank</td>
+                  <td>Over <a href="https://www.checkout.com/docs/developer-resources/codes/currency-codes" target="_blank" rel="noopener">100+ currencies</a> are currently accepted.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-            <h4>Limits</h4>
-            <a href="assets/payouts_limits.png" target="_blank" rel="noopener">
-              <img class="screenshot wide" src="assets/payouts_limits.png"
-                   alt="Payout limits by scheme, domestic vs cross-border, single transaction amount, and 1/7/30-day velocity amounts" loading="lazy" />
-            </a>
+          <!-- Limits -->
+          <div class="subsection box" id="limits">
+            <h3>Limits</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col" rowspan="2">Scheme</th>
+                  <th scope="col" rowspan="2">Domestic vs. XB</th>
+                  <th scope="col" rowspan="2">Currency Equiv.</th>
+                  <th scope="col" rowspan="2">Single Tx Amount</th>
+                  <th scope="col" colspan="3">Velocity Amount</th>
+                </tr>
+                <tr>
+                  <th scope="col">1-day</th>
+                  <th scope="col">7-day</th>
+                  <th scope="col">30-day</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Default</td><td>Default</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">N/A</td>
+                </tr>
+
+                <tr class="cat"><th colspan="7">Money Transfer (e.g. Visa Direct AA, PP, FT or Mastercard Send C52)</th></tr>
+                <tr>
+                  <td>Visa Direct</td><td>Domestic</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">$ 50,000</td><td class="num">$ 100,000</td><td class="num">$ 200,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>Domestic</td><td>USD</td>
+                  <td class="num">$ 25,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 50,000</td>
+                </tr>
+                <tr>
+                  <td>Visa Direct</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 25,000</td><td class="num">$ 50,000</td><td class="num">$ 100,000</td><td class="num">$ 200,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 25,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 50,000</td>
+                </tr>
+
+                <tr class="cat"><th colspan="7">Money Transfer – Mastercard Send C07 only</th></tr>
+                <tr>
+                  <td>Mastercard Send</td><td>Domestic</td><td>USD</td>
+                  <td class="num">$ 5,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 10,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 5,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 10,000</td>
+                </tr>
+
+                <tr class="cat"><th colspan="7">Non-Money Transfer (e.g. Visa Direct FD, LO, MD or Mastercard Send C55)</th></tr>
+                <tr>
+                  <td>Visa Direct</td><td>Domestic</td><td>USD</td>
+                  <td class="num">$ 125,000</td><td class="num">$ 250,000</td><td class="num">$ 600,000</td><td class="num">$ 1,250,000</td>
+                </tr>
+                <tr>
+                  <td>Visa Direct</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">$ 100,000</td><td class="num">$ 250,000</td><td class="num">$ 500,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>Domestic</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 50,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 50,000</td>
+                </tr>
+
+                <tr class="cat"><th colspan="7">Gaming &amp; Gambling (e.g. Visa Direct OG or Mastercard Send C04)</th></tr>
+                <tr>
+                  <td>Visa Direct</td><td>Domestic</td><td>USD</td>
+                  <td class="num">$ 125,000</td><td class="num">$ 250,000</td><td class="num">$ 600,000</td><td class="num">$ 1,250,000</td>
+                </tr>
+                <tr>
+                  <td>Visa Direct</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">$ 100,000</td><td class="num">$ 250,000</td><td class="num">$ 500,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>Domestic</td><td>USD</td>
+                  <td class="num">TBC</td><td class="num">TBC</td><td class="num">TBC</td><td class="num">TBC</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>XB</td><td>USD</td>
+                  <td class="num">TBC</td><td class="num">TBC</td><td class="num">TBC</td><td class="num">TBC</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
       </div>
@@ -229,6 +352,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=2" defer></script>
 </body>
 </html>

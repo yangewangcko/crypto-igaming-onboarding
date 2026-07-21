@@ -6,7 +6,10 @@
   <title>Payin — Merchant Onboarding — Checkout.com</title>
   <meta name="description" content="How to accept payments with Checkout.com: integration options, supported methods, and a live Flow demo." />
   <link rel="preconnect" href="https://flow.cko.solutions" />
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -14,7 +17,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
-        <img src="assets/logo-blue.svg" alt="Checkout.com" height="26" />
+        <img src="assets/logo.svg" alt="Checkout.com" height="26" />
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
       <nav class="site-nav" id="nav" aria-label="Primary">
@@ -69,7 +72,7 @@
         <section class="doc-section" id="payment-lifecycle">
           <h2>Payment Lifecycle</h2>
           <p>A payment moves through fraud checks, authentication, authorization, and capture. This diagram shows the full flow and where a payment can be declined, voided, or flagged.</p>
-          <a href="assets/payment-lifecycle.jpg" target="_blank" rel="noopener">
+          <a class="lightbox-link" href="assets/payment-lifecycle.jpg" aria-label="Open the payment lifecycle diagram full screen">
             <img class="diagram" src="assets/payment-lifecycle.jpg"
                  alt="Payment lifecycle: Create a payment → FD pre-auth check → 3DS authentication → authorization → FD post-auth check → captured, with decline, void, and flagged branches" loading="lazy" />
           </a>
@@ -222,6 +225,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=2" defer></script>
 </body>
 </html>

@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FAQ — Merchant Onboarding — Checkout.com</title>
   <meta name="description" content="Frequently asked questions about onboarding with Checkout.com for crypto and iGaming merchants." />
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -13,7 +16,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
-        <img src="assets/logo-blue.svg" alt="Checkout.com" height="26" />
+        <img src="assets/logo.svg" alt="Checkout.com" height="26" />
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
       <nav class="site-nav" id="nav" aria-label="Primary">
@@ -63,8 +66,8 @@
           </details>
           <details>
             <summary>How do I create API keys?</summary>
-            <p>Sign in to the Dashboard, select the <strong>Developers</strong> icon in the top navigation bar, open the
-              <strong>Keys</strong> tab, and select <strong>Create a new key</strong>. See the
+            <p>Sign in to the Dashboard, select <em>Developers</em> section in the left-side menu bar, click on
+              <em>Keys</em>, and select <strong>Create a new key</strong>. See the
               <a href="https://www.checkout.com/docs/business-operations/use-the-dashboard/developers" target="_blank" rel="noopener">Developers documentation</a>
               for details.</p>
           </details>
@@ -98,7 +101,7 @@
           <details>
             <summary>What should be on my pre-go-live checklist?</summary>
             <p>Before you switch on live traffic, confirm your technical integration and configuration are production-ready:</p>
-            <ul>
+            <ul class="checks">
               <li><strong>Activate the Dashboard:</strong> ensure your Dashboard is activated and the right people on your team have access.</li>
               <li><strong>Swap API keys and endpoints:</strong> move your environment configuration from sandbox to production. Replace all test public and secret keys with the live production keys generated in the Dashboard.</li>
               <li><strong>Configure live webhooks:</strong> recreate all system-critical webhooks in your live environment. Make sure your server listens for live events such as <code>card_verified</code>, <code>payment_approved</code>, <code>payment_declined</code>, <code>payment_captured</code>, <code>payment_refunded</code>, and <code>payment_voided</code>, and that your live endpoints are secured and authenticated.</li>
@@ -126,6 +129,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=2" defer></script>
 </body>
 </html>

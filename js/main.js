@@ -43,9 +43,43 @@
     });
   });
 
+  // --- Image lightbox (full-screen popup, stays on page) ---
+  var lbLinks = document.querySelectorAll("a.lightbox-link");
+  if (lbLinks.length) {
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox-overlay";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    var lbImg = document.createElement("img");
+    lbImg.alt = "";
+    overlay.appendChild(lbImg);
+    document.body.appendChild(overlay);
+
+    function closeLb() {
+      overlay.classList.remove("open");
+      document.body.style.overflow = "";
+      lbImg.removeAttribute("src");
+    }
+    lbLinks.forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        var img = a.querySelector("img");
+        lbImg.src = a.getAttribute("href");
+        lbImg.alt = img ? img.getAttribute("alt") || "" : "";
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+    });
+    // Click anywhere on the overlay (including the image) closes it.
+    overlay.addEventListener("click", closeLb);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && overlay.classList.contains("open")) closeLb();
+    });
+  }
+
   // --- In-page TOC scroll-spy ---
   var toc = document.querySelector(".doc-toc");
-  if (toc && "IntersectionObserver" in window) {
+  if (toc) {
     var links = {};
     toc.querySelectorAll("a[href^='#']").forEach(function (a) {
       links[a.getAttribute("href").slice(1)] = a;
@@ -53,24 +87,28 @@
     var targets = Object.keys(links)
       .map(function (id) { return document.getElementById(id); })
       .filter(Boolean);
-    var visible = new Set();
+    // Sort by document order so "last section past the line" is reliable
+    // even though #integration contains its subsections.
+    targets.sort(function (a, b) {
+      return (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+    });
+
     function highlight() {
+      var line = 100; // detection line just below the sticky header
       var current = null;
-      // topmost visible section wins
       targets.forEach(function (el) {
-        if (visible.has(el.id) && (!current || el.offsetTop < current.offsetTop)) current = el;
+        if (el.getBoundingClientRect().top - line <= 0) current = el; // deepest passed wins
       });
+      if (!current && targets.length) current = targets[0]; // top of page
+      // Bottom of page: the last section can't reach the line — activate it.
+      var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom && targets.length) current = targets[targets.length - 1];
       Object.keys(links).forEach(function (id) {
-        links[id].classList.toggle("active", current && id === current.id);
+        links[id].classList.toggle("active", !!current && id === current.id);
       });
     }
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) visible.add(e.target.id);
-        else visible.delete(e.target.id);
-      });
-      highlight();
-    }, { rootMargin: "-80px 0px -70% 0px", threshold: 0 });
-    targets.forEach(function (el) { obs.observe(el); });
+    highlight();
+    window.addEventListener("scroll", highlight, { passive: true });
+    window.addEventListener("resize", highlight);
   }
 })();
