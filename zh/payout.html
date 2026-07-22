@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>出金 — 商户接入 — Checkout.com</title>
+  <meta name="description" content="如何通过 Checkout.com 付款发送资金：卡片提现、账户转账以及 AFT 流程。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
+        <img src="../assets/logo.svg" alt="Checkout.com" height="26" />
+      </a>
+      <nav class="site-nav" id="nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="preparation.html">准备工作</a>
+        <a href="payin.html">入金</a>
+        <a href="payout.html" class="is-active" aria-current="page">出金</a>
+        <a href="fraud-management.html">欺诈管理</a>
+        <a href="faq.html">常见问题</a>
+        <a href="industry-news.html">行业动态</a>
+        <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">开发文档 ↗</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API 参考 ↗</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Language">
+          <a href="../payout.html" hreflang="en" lang="en">EN</a>
+          <span class="is-active">中文</span>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">首页</a> / 出金</p>
+        <h1>出金</h1>
+        <p>实时将资金直接发送到收款人的卡片 — 卡片提现的类型及如何集成。</p>
+      </div>
+    </div>
+
+    <div class="doc-layout">
+      <!-- In-page navigation -->
+      <nav class="doc-toc" aria-label="On this page">
+        <p class="toc-title">本页内容</p>
+        <ul>
+          <li><a href="#card-payouts">卡片提现</a></li>
+          <li><a href="#types">卡片提现的类型</a>
+            <ul>
+              <li><a href="#card-payout">提现到银行卡</a></li>
+              <li><a href="#apple-pay-card-payout">提现到 Apple Pay</a></li>
+            </ul>
+          </li>
+          <li><a href="#integration-guide">集成指南</a>
+            <ul>
+              <li><a href="#key-scopes">准备工作：密钥权限范围</a></li>
+              <li><a href="#process">流程</a></li>
+              <li><a href="#required-fields">必填字段</a></li>
+              <li><a href="#domestic-vs-cross-border">境内与跨境</a></li>
+              <li><a href="#internal-validation">[生产环境] 内部校验</a></li>
+              <li><a href="#currencies">货币</a></li>
+              <li><a href="#limits">限额</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="doc-content">
+        <!-- Card Payouts -->
+        <section class="doc-section" id="card-payouts">
+          <h2>卡片提现</h2>
+          <p><a href="https://www.checkout.com/docs/payments/request-payouts/card-payouts" target="_blank" rel="noopener">卡片提现</a>
+            解决方案使您能够通过与 Visa Direct 和 Mastercard MoneySend 的直接集成，实时将资金直接发送到收款人的卡片，
+            并同时支持境内和跨境付款。</p>
+          <p>卡片提现适用于在以下国家或地区注册成立的企业：</p>
+          <ul>
+            <li>欧洲经济区（EEA）</li>
+            <li>新加坡</li>
+            <li>阿拉伯联合酋长国</li>
+            <li>英国（UK）</li>
+            <li>美利坚合众国（USA）</li>
+          </ul>
+        </section>
+
+        <!-- Types -->
+        <section class="doc-section" id="types">
+          <h2>卡片提现的类型</h2>
+          <p>卡片提现有两种类型。</p>
+
+          <div class="subsection box" id="card-payout">
+            <h3>提现到银行卡</h3>
+            <p>您可以针对以下资金转账类型类别执行<a href="https://www.checkout.com/docs/payments/request-payouts/card-payouts/request-a-card-payout" target="_blank" rel="noopener">卡片提现</a>：</p>
+            <ul>
+              <li>资金转账</li>
+              <li>非资金转账</li>
+              <li>在线博彩</li>
+            </ul>
+          </div>
+
+          <div class="subsection box" id="apple-pay-card-payout">
+            <h3>提现到 Apple Pay</h3>
+            <p><a href="https://www.checkout.com/docs/payments/request-payouts/card-payouts/request-an-apple-pay-card-payout" target="_blank" rel="noopener">Apple Pay 卡片提现</a>
+              解决方案使您能够在以下平台及最低操作系统版本上，通过 Apple Pay 向符合条件的卡片执行付款：</p>
+            <ul>
+              <li>iOS 17.0</li>
+              <li>iPadOS 17.0</li>
+              <li>Mac Catalyst 17.0</li>
+              <li>visionOS 1.0</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Integration guide -->
+        <section class="doc-section" id="integration-guide">
+          <h2>集成指南</h2>
+          <p>面向商户的出金集成指南。</p>
+
+          <!-- Key scopes -->
+          <div class="subsection box" id="key-scopes">
+            <h3>准备工作：密钥权限范围</h3>
+            <p>CKO 已在沙盒中为 API 密钥分配了密钥权限范围（<code>vault:card-metadata</code>、<code>balances</code>、<code>forex</code>）。</p>
+            <p><strong>商户：</strong>对于生产环境，请通过控制台提交支持工单，或发送邮件至
+              <button type="button" class="copy-chip" data-email="support@checkout.com" aria-label="复制 support@checkout.com"><span>support@checkout.com</span><span class="cc-copy">复制</span></button>
+              并附上您正在使用的私有 API 密钥和／或 OAuth 密钥（用于 forex）的 Key ID，请团队将上述权限范围添加到这些密钥上。</p>
+          </div>
+
+          <!-- Process -->
+          <div class="subsection box" id="process">
+            <h3>流程</h3>
+            <ol class="proc">
+              <li>
+                <strong>端点：</strong> <code>POST /metadata/card</code>
+                <ul>
+                  <li><code>format = card_payouts</code></li>
+                </ul>
+                在响应中，根据不同的资金转账类型检查资格：
+                <ul>
+                  <li>Visa：<code>money_transfer</code>（FT/LA）、<code>non_money_transfer</code>（FD）</li>
+                  <li>Mastercard：<code>money_transfer</code>（C52）、<code>non_money_transfer</code>（C55）</li>
+                </ul>
+              </li>
+              <li>
+                <strong>端点：</strong> <code>GET /balances</code><br />
+                检查您是否有足够的资金。金额 = 可用 + 待处理 + 运营。
+              </li>
+              <li>
+                <strong>（如有需要）端点：</strong> <code>GET /forex/rates</code>
+                <ul>
+                  <li><code>product = card_payouts</code></li>
+                </ul>
+                更新频率：
+                <ul>
+                  <li>Visa：每日 UTC 午夜</li>
+                  <li>Mastercard：每日 UTC 22:00</li>
+                </ul>
+              </li>
+              <li>
+                <strong>端点：</strong> <code>POST /payments</code>
+                <ul>
+                  <li><code>source.type = currency_account</code></li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Required fields -->
+          <div class="subsection box" id="required-fields">
+            <h3>必填字段</h3>
+            <ul>
+              <li><strong>Currency Account ID</strong>（<code>ca_</code>）— 用作
+                <code>/payments</code> 端点中的 <code>source.id</code> 字段。可在控制台（实体Entity层级）→ Business account → Balances中找到。点击货币账户Currency Account上的
+                <strong>…</strong> 图标以打开账户详情弹窗。</li>
+              <li><strong>Entity ID</strong>（<code>ent_</code>）— 用于 <code>/balances</code> 端点。可在
+                控制台（实体Entity层级）→ Settings（右上角）→ 账户详情Account details中找到。</li>
+            </ul>
+
+            <p><strong>在 <code>/payments</code> 端点中：</strong></p>
+            <ul>
+              <li><code>instruction.funds_transfer_type</code>：
+                <ul>
+                  <li>Visa 为 FD/FT/LA</li>
+                  <li>Mastercard 为 C52/C55</li>
+                </ul>
+                <span class="muted">该值在沙盒与生产环境中可能不同。</span>
+              </li>
+              <li><code>processing_channel_id</code> — 可在控制台 → 设置（右上角）→ 设置 →
+                业务设置 → 处理通道中找到。</li>
+              <li><code>destination.account_holder.type = individual</code></li>
+              <li>资金转账（FT/LA/C52）需要 <code>sender</code> — 发送方即用户：
+                <ul>
+                  <li><code>sender.type = individual</code></li>
+                  <li><code>sender.first_name</code> = 用户的名字</li>
+                  <li><code>sender.last_name</code> = 用户的姓氏</li>
+                  <li><code>sender.address</code> = 用户的账单地址</li>
+                  <li><code>sender.reference</code></li>
+                  <li><code>sender.reference_type = other</code></li>
+                  <li><code>sender.source_of_funds = debit</code></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Domestic vs cross-border -->
+          <div class="subsection box" id="domestic-vs-cross-border">
+            <h3>境内与跨境</h3>
+            <p class="muted">沙盒环境中已启用所有国家或地区，但对于生产环境，请参考我们提供的国家或地区清单。</p>
+            <ul>
+              <li>当实体的注册国家或地区与收款人发卡行国家或地区相同时，卡片提现为<strong>境内</strong>。</li>
+              <li>当实体的注册国家或地区与收款人发卡行国家或地区不同时，卡片提现为<strong>跨境</strong>。</li>
+            </ul>
+          </div>
+
+          <!-- [Production] Internal validation -->
+          <div class="subsection box" id="internal-validation">
+            <h3>[生产环境] 内部校验</h3>
+            <ol>
+              <li><strong>非资金转账</strong>（发送方为商户）：检查收款人发卡行国家或地区是否属于目的地国家或地区清单（参见国家或地区清单 Excel — 将由 CKO 团队提供）。</li>
+              <li><strong>资金转账</strong>（发送方为用户）：检查收款人发卡行国家或地区是否属于目的地国家或地区清单，并检查发送方账单国家或地区是否属于发送方国家或地区清单（参见国家或地区清单 Excel — 将由 CKO 团队提供）。</li>
+            </ol>
+          </div>
+
+          <!-- Currencies -->
+          <div class="subsection box" id="currencies">
+            <h3>货币</h3>
+            <p>有两种关键货币需要了解。</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col">货币类型</th>
+                  <th scope="col">说明</th>
+                  <th scope="col">支持的货币</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">持有货币</th>
+                  <td>Checkout.com 从商户处接受、用于为 Pay to Card 交易注资的货币。这些将是商户在 Checkout.com 持有的货币账户的货币</td>
+                  <td>Checkout.com 目前接受 GBP、EUR、USD</td>
+                </tr>
+                <tr>
+                  <th scope="row">处理货币</th>
+                  <td>卡组织可通过当地发卡银行向收款人提供的货币</td>
+                  <td>目前接受<a href="https://www.checkout.com/docs/developer-resources/codes/currency-codes" target="_blank" rel="noopener">100+ 种货币</a>。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Limits -->
+          <div class="subsection box" id="limits">
+            <h3>限额</h3>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col" rowspan="2">卡组织</th>
+                  <th scope="col" rowspan="2">境内 vs. XB</th>
+                  <th scope="col" rowspan="2">货币等值</th>
+                  <th scope="col" rowspan="2">单笔交易金额</th>
+                  <th scope="col" colspan="3">累计限额</th>
+                </tr>
+                <tr>
+                  <th scope="col">1 天</th>
+                  <th scope="col">7 天</th>
+                  <th scope="col">30 天</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>默认</td><td>默认</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">N/A</td>
+                </tr>
+
+                <tr class="cat"><th colspan="7">资金转账（例如 Visa Direct AA、PP、FT 或 Mastercard Send C52）</th></tr>
+                <tr>
+                  <td>Visa Direct</td><td>境内</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">$ 50,000</td><td class="num">$ 100,000</td><td class="num">$ 200,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>境内</td><td>USD</td>
+                  <td class="num">$ 25,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 50,000</td>
+                </tr>
+                <tr>
+                  <td>Visa Direct</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 25,000</td><td class="num">$ 50,000</td><td class="num">$ 100,000</td><td class="num">$ 200,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 25,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 50,000</td>
+                </tr>
+
+                <tr class="cat"><th colspan="7">资金转账 – 仅限 Mastercard Send C07</th></tr>
+                <tr>
+                  <td>Mastercard Send</td><td>境内</td><td>USD</td>
+                  <td class="num">$ 5,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 10,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 5,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 10,000</td>
+                </tr>
+
+                <tr class="cat"><th colspan="7">非资金转账（例如 Visa Direct FD、LO、MD 或 Mastercard Send C55）</th></tr>
+                <tr>
+                  <td>Visa Direct</td><td>境内</td><td>USD</td>
+                  <td class="num">$ 125,000</td><td class="num">$ 250,000</td><td class="num">$ 600,000</td><td class="num">$ 1,250,000</td>
+                </tr>
+                <tr>
+                  <td>Visa Direct</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">$ 100,000</td><td class="num">$ 250,000</td><td class="num">$ 500,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>境内</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 50,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">N/A</td><td class="num">N/A</td><td class="num">$ 50,000</td>
+                </tr>
+
+                <tr class="cat"><th colspan="7">游戏与博彩（例如 Visa Direct OG 或 Mastercard Send C04）</th></tr>
+                <tr>
+                  <td>Visa Direct</td><td>境内</td><td>USD</td>
+                  <td class="num">$ 125,000</td><td class="num">$ 250,000</td><td class="num">$ 600,000</td><td class="num">$ 1,250,000</td>
+                </tr>
+                <tr>
+                  <td>Visa Direct</td><td>XB</td><td>USD</td>
+                  <td class="num">$ 50,000</td><td class="num">$ 100,000</td><td class="num">$ 250,000</td><td class="num">$ 500,000</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>境内</td><td>USD</td>
+                  <td class="num">TBC</td><td class="num">TBC</td><td class="num">TBC</td><td class="num">TBC</td>
+                </tr>
+                <tr>
+                  <td>Mastercard Send</td><td>XB</td><td>USD</td>
+                  <td class="num">TBC</td><td class="num">TBC</td><td class="num">TBC</td><td class="num">TBC</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="../assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — 加密货币和 iGaming 商户接入。</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3" defer></script>
+</body>
+</html>

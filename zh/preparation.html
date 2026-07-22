@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>准备工作 — 商户接入 — Checkout.com</title>
+  <meta name="description" content="与 Checkout.com 接入前需要准备的内容：文件、牌照和账户信息。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
+        <img src="../assets/logo.svg" alt="Checkout.com" height="26" />
+      </a>
+      <nav class="site-nav" id="nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="preparation.html" class="is-active" aria-current="page">准备工作</a>
+        <a href="payin.html">入金</a>
+        <a href="payout.html">出金</a>
+        <a href="fraud-management.html">欺诈管理</a>
+        <a href="faq.html">常见问题</a>
+        <a href="industry-news.html">行业动态</a>
+        <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">开发文档 ↗</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API 参考 ↗</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Language">
+          <a href="../preparation.html" hreflang="en" lang="en">EN</a>
+          <span class="is-active">中文</span>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">首页</a> / 准备工作</p>
+        <h1>准备工作</h1>
+        <p>在开始构建之前需要落实的两件事：您的 PCI DSS 合规和一个沙盒账户。</p>
+      </div>
+    </div>
+
+    <!-- Section 1: PCI DSS -->
+    <section class="section">
+      <div class="container">
+        <h2>PCI DSS 合规</h2>
+        <p class="lead">
+          所有接受支付卡的商户都必须遵守支付卡行业数据安全标准（PCI DSS）。
+          您可以通过自我评估问卷（SAQ）来审查并验证您的 PCI DSS 合规情况。
+        </p>
+        <p>您需要提供的 SAQ 类型取决于您的集成方式。</p>
+        <ul class="cards">
+          <li class="card">
+            <h3>SAQ A</h3>
+            <p>Flow、托管支付页面（HPP）、Payment Links 或我们的移动 SDK。</p>
+          </li>
+          <li class="card">
+            <h3>SAQ D</h3>
+            <p>使用您自有集成平台的完整卡片 API（Full Card API）。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Section 2: Sandbox Account Creation -->
+    <section class="section">
+      <div class="container">
+        <h2>创建沙盒账户</h2>
+        <p class="lead">设置一个测试账户，以便在上线前进行构建和验证。</p>
+        <ol class="steps detailed">
+          <li class="step">
+            <span class="step-num">1</span>
+            <div>
+              <h3>创建测试账户</h3>
+              <p>使用公司邮箱地址在
+                <a href="https://www.checkout.com/get-test-account" target="_blank" rel="noopener">checkout.com/get-test-account</a> 创建您的测试账户。</p>
+              <img class="screenshot" src="../assets/sandbox_account.png"
+                   alt="创建测试账户表单，包含姓名、职位、公司、邮箱、所在地和处理量字段" loading="lazy" />
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <div>
+              <h3>查收您的邮件</h3>
+              <p>您将收到一封来自 Okta 的欢迎邮件，其中包含激活链接。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <div>
+              <h3>激活并设置您的密码</h3>
+              <p>激活您的账户并重置密码。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">4</span>
+            <div>
+              <h3>登录控制台</h3>
+              <p>现在您可以在
+                <a href="https://dashboard.sandbox.checkout.com/" target="_blank" rel="noopener">dashboard.sandbox.checkout.com</a> 登录控制台。</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num">5</span>
+            <div>
+              <h3>邀请您的同事</h3>
+              <p>以 Owner 用户身份激活并登录后，前往
+                <strong>Settings → Roles and permissions</strong>，然后点击 <strong>+ New User</strong> 邀请更多同事。</p>
+              <img class="screenshot wide" src="../assets/add_user.png"
+                   alt="控制台的 Roles and permissions 页面，显示 Settings 齿轮图标和 New user 按钮" loading="lazy" />
+            </div>
+          </li>
+        </ol>
+        <p style="margin-top:24px;">账户相关问题：
+          <button type="button" class="copy-chip" data-email="support@checkout.com" aria-label="Copy support@checkout.com">
+            <span>support@checkout.com</span><span class="cc-copy">复制</span>
+          </button>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="../assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — 加密货币和 iGaming 商户接入。</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3" defer></script>
+</body>
+</html>

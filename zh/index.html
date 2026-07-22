@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>商户接入 — Checkout.com</title>
+  <meta name="description" content="面向加密货币和 iGaming 商户的 Checkout.com 接入指南 — 准备工作、收款、付款、欺诈管理和常见问题。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
+        <img src="../assets/logo.svg" alt="Checkout.com" height="26" />
+      </a>
+      <nav class="site-nav" id="nav" aria-label="主导航">
+        <a href="index.html" class="is-active" aria-current="page">首页</a>
+        <a href="preparation.html">准备工作</a>
+        <a href="payin.html">入金</a>
+        <a href="payout.html">出金</a>
+        <a href="fraud-management.html">欺诈管理</a>
+        <a href="faq.html">常见问题</a>
+        <a href="industry-news.html">行业动态</a>
+        <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">开发文档 ↗</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API 参考 ↗</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Language">
+          <a href="../index.html" hreflang="en" lang="en">EN</a>
+          <span class="is-active">中文</span>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Banner -->
+    <section class="banner">
+      <div class="container">
+        <h1>Checkout.com 上线指南</h1>
+        <p class="lede">
+          您在 Checkout.com 顺利上线的指南 — 需要准备什么、收款与付款如何运作、
+          我们如何管理欺诈，以及常见问题的解答。专为加密货币和 iGaming 商户打造。
+        </p>
+
+        <div class="team">
+          <p class="team-label">您的接入团队 — 将鼠标悬停在卡片上以复制邮箱</p>
+          <ul class="team-grid">
+            <li class="team-card">
+              <span class="tc-role">销售总监</span>
+              <span class="tc-name">Esteban Sadurni</span>
+              <button type="button" class="tc-email" data-email="esteban.sadurni@checkout.com" aria-label="复制 Esteban Sadurni 的邮箱">
+                <span class="tc-email-text">esteban.sadurni@checkout.com</span>
+                <span class="tc-copy">复制</span>
+              </button>
+            </li>
+            <li class="team-card">
+              <span class="tc-role">解决方案工程总监</span>
+              <span class="tc-name">Tom Chesnoy</span>
+              <button type="button" class="tc-email" data-email="tom.chesnoy@checkout.com" aria-label="复制 Tom Chesnoy 的邮箱">
+                <span class="tc-email-text">tom.chesnoy@checkout.com</span>
+                <span class="tc-copy">复制</span>
+              </button>
+            </li>
+            <li class="team-card">
+              <span class="tc-role">亚太解决方案工程经理</span>
+              <span class="tc-name">YanGe Wang</span>
+              <button type="button" class="tc-email" data-email="yange.wang@checkout.com" aria-label="复制 YanGe Wang 的邮箱">
+                <span class="tc-email-text">yange.wang@checkout.com</span>
+                <span class="tc-copy">复制</span>
+              </button>
+            </li>
+            <li class="team-card">
+              <span class="tc-role">实施工程经理</span>
+              <span class="tc-name">Tomer Horviz</span>
+              <button type="button" class="tc-email" data-email="Tomer.Horviz@checkout.com" aria-label="复制 Tomer Horviz 的邮箱">
+                <span class="tc-email-text">Tomer.Horviz@checkout.com</span>
+                <span class="tc-copy">复制</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guide sections -->
+    <section class="section">
+      <div class="container">
+        <h2>本指南内容</h2>
+        <p class="lead">六个板块带您从首次申请一路走到上线处理，并让您随时了解影响您业务的规则 — 以及面向开发者的完整文档和 API 参考。</p>
+        <ul class="cards">
+          <li class="card">
+            <h3><a href="preparation.html">1 · 准备工作</a></h3>
+            <p>在申请之前需要收集的文件、牌照和信息。</p>
+          </li>
+          <li class="card">
+            <h3><a href="payin.html">2 · 入金</a></h3>
+            <p>如何接受付款 — 集成方式与支持的支付方式。</p>
+          </li>
+          <li class="card">
+            <h3><a href="payout.html">3 · 出金</a></h3>
+            <p>如何向您的客户和交易对手付款。</p>
+          </li>
+          <li class="card">
+            <h3><a href="fraud-management.html">4 · 欺诈管理</a></h3>
+            <p>保护您的业务并保持合规的工具与控制措施。</p>
+          </li>
+          <li class="card">
+            <h3><a href="faq.html">5 · 常见问题</a></h3>
+            <p>商户在接入过程中最常问到的问题解答。</p>
+          </li>
+          <li class="card">
+            <h3><a href="industry-news.html">6 · 行业动态</a></h3>
+            <p>影响加密货币和 iGaming 商户的监管与卡组织变更。</p>
+          </li>
+          <li class="card">
+            <h3><a href="https://www.checkout.com/docs" target="_blank" rel="noopener">开发文档 ↗</a></h3>
+            <p>Checkout.com 平台的产品指南与操作说明。</p>
+          </li>
+          <li class="card">
+            <h3><a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API 参考 ↗</a></h3>
+            <p>构建集成所需的完整端点文档。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="../assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — 加密货币和 iGaming 商户接入。</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3" defer></script>
+</body>
+</html>

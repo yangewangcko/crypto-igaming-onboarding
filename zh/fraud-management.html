@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>欺诈管理 — 商户接入 — Checkout.com</title>
+  <meta name="description" content="Checkout.com 的欺诈与风险控制：3DS、身份锚定、设备情报、元数据，以及面向加密货币和 iGaming 商户的争议处理。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
+        <img src="../assets/logo.svg" alt="Checkout.com" height="26" />
+      </a>
+      <nav class="site-nav" id="nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="preparation.html">准备工作</a>
+        <a href="payin.html">入金</a>
+        <a href="payout.html">出金</a>
+        <a href="fraud-management.html" class="is-active" aria-current="page">欺诈管理</a>
+        <a href="faq.html">常见问题</a>
+        <a href="industry-news.html">行业动态</a>
+        <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">开发文档 ↗</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API 参考 ↗</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Language">
+          <a href="../fraud-management.html" hreflang="en" lang="en">EN</a>
+          <span class="is-active">中文</span>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">首页</a> / 欺诈管理</p>
+        <h1>欺诈管理</h1>
+        <p>欺诈分子会专门在新商户上线后的头 30–90 天内下手，因为他们认为此时的安全模型尚未完全校准。请遵循以下支柱来保护您的交易处理。</p>
+      </div>
+    </div>
+
+    <div class="doc-layout">
+      <!-- In-page navigation -->
+      <nav class="doc-toc" aria-label="On this page">
+        <p class="toc-title">本页内容</p>
+        <ul>
+          <li><a href="#three-ds">强制 3D Secure（3DS）</a></li>
+          <li><a href="#i2p">身份与支付（I2P）锚定</a></li>
+          <li><a href="#device-intelligence">设备情报</a></li>
+          <li><a href="#cold-start">“冷启动”风险模型</a></li>
+          <li><a href="#ratio-protection">主动比率保护</a></li>
+          <li><a href="#metadata">元数据metadata</a></li>
+          <li><a href="#fraud-detection">欺诈检测</a></li>
+          <li><a href="#disputes">争议管理</a></li>
+        </ul>
+      </nav>
+
+      <div class="doc-content">
+        <!-- 1. Mandatory 3D Secure -->
+        <section class="doc-section" id="three-ds">
+          <h2>强制 3D Secure（3DS）</h2>
+          <p><strong>政策：</strong>所有交易都必须通过
+            <a href="https://www.checkout.com/docs/payments/authenticate-payments/3d-secure" target="_blank" rel="noopener">3D Secure</a> 进行处理。
+            3DS 增加了一层身份验证，帮助向发卡银行核实持卡人的身份。它是您抵御未经授权用卡的
+            第一道防线，并为防范与欺诈相关的拒付提供了有力保护。</p>
+        </section>
+
+        <!-- 2. Identity-to-Payment Anchoring -->
+        <section class="doc-section" id="i2p">
+          <h2>身份与支付（I2P）锚定</h2>
+          <p>标准的授权响应不会返回持卡人的姓名。这使得欺诈分子能够以
+            “用户 A”的身份通过 KYC，却用属于“用户 B”的卡进行支付。</p>
+
+          <div class="subsection">
+            <h3>账户名核验（ANI）</h3>
+            <p>使用 ANI 主动将经过 KYC 验证的法定姓名发送给银行进行核验。</p>
+          </div>
+
+          <div class="subsection">
+            <h3>执行方式</h3>
+            <p>ANI 只能在 $0 授权上执行。我们建议您将此步骤作为交易流程中的强制环节来实施
+              （例如在卡片接入期间，或在首次购买之前），以确保在资金被扣取前完成身份
+              一致性核验。</p>
+          </div>
+
+          <div class="subsection">
+            <h3>硬阻断政策</h3>
+            <p>如果银行对姓名返回“不匹配”（No Match）结果，则应自动拒绝该交易。</p>
+          </div>
+        </section>
+
+        <!-- 3. Device Intelligence -->
+        <section class="doc-section" id="device-intelligence">
+          <h2>设备情报</h2>
+          <div class="subsection">
+            <h3>Risk SDK（强制）</h3>
+            <p>无论您采用哪种集成方式，都必须在前端集成
+              <a href="https://www.checkout.com/docs/developer-resources/sdks/risk-sdks" target="_blank" rel="noopener">Checkout Risk SDK</a>。
+              这是追踪物理硬件 ID、发现在一台设备上使用多个账户的专业“欺诈工厂”的唯一途径。</p>
+          </div>
+        </section>
+
+        <!-- 4. The "Cold Start" Risk Model -->
+        <section class="doc-section" id="cold-start">
+          <h2>“冷启动”风险模型</h2>
+          <p>通过为新账户设置临时“减速带”来保护您的上线阶段：</p>
+          <ul>
+            <li><strong>分级限额：</strong>在用户注册的第一周内将交易上限保持在较低水平（例如 $100）。</li>
+            <li><strong>提现冻结：</strong>对于高流动性资产（如加密货币），对新用户的付款实施 24–48 小时的
+              冻结期。这为早期预警（TC40）报告在资金转出之前送达争取了时间。</li>
+          </ul>
+        </section>
+
+        <!-- 5. Proactive Ratio Protection -->
+        <section class="doc-section" id="ratio-protection">
+          <h2>主动比率保护</h2>
+          <div class="subsection">
+            <h3>快速争议解决（RDR）</h3>
+            <p>设置自动化规则以即时退款处理争议。这可以在争议影响您的拒付率之前将其消除。</p>
+          </div>
+          <div class="subsection">
+            <h3>Webhook 自动化</h3>
+            <p>配置您的系统，使其在收到
+              <a href="https://www.checkout.com/docs/developer-resources/event-notifications/event-types/fraud_reported" target="_blank" rel="noopener">Fraud Reported</a>
+              （TC40 或 SAFE）webhook 的那一刻立即冻结账户并取消待处理的订单。</p>
+          </div>
+        </section>
+
+        <!-- 6. Metadata -->
+        <section class="doc-section" id="metadata">
+          <h2>元数据metadata</h2>
+          <p>我们建议在您的支付请求中传递额外的
+            <a href="https://api-reference.checkout.com/#operation/requestAPaymentOrPayout!path=0/metadata&amp;t=request" target="_blank" rel="noopener">元数据</a>。
+            这能让我们和我们的风险团队更好地监控您的流量、识别更多欺诈，并与我们这边更广泛的
+            网络模式进行交叉核对。</p>
+          <p>能产生最大影响的关键字段包括：</p>
+
+          <div class="subsection">
+            <h3>身份与 KYC 洞察</h3>
+            <ul>
+              <li><code>kyc_level</code>：（例如 Tier_1 与 Tier_2）用于标记来自未验证用户的高价值交易尝试。</li>
+              <li><code>user_age</code>：（整数）本人的实际年龄（来自其身份证件），对于发现
+                “代际欺诈”模式至关重要，例如老年人被利用（诈骗）或年轻人/资金骡子的活动。</li>
+              <li><code>account_age</code>：（以天为单位）对于发现“打了就跑”式的攻击至关重要。</li>
+              <li><code>is_first_purchase</code>：（布尔值）在用户成功扣款之前应保持为 true。
+                这可确保即使初次尝试失败或被拒，仍维持高度审查。</li>
+              <li><code>document_type</code>：帮助我们识别是否有某种特定的伪造证件类型正在平台上被反复使用。</li>
+            </ul>
+          </div>
+
+          <div class="subsection">
+            <h3>账户完整性</h3>
+            <ul>
+              <li><code>email/phone_verified</code>：（布尔值）欺诈分子常常使用未验证或 VoIP 的联系方式。</li>
+              <li><code>total_successful_orders</code>：帮助我们为您忠实的低风险客户“开绿灯”。</li>
+              <li><code>is_trusted_customer</code>：（布尔值）您对高信誉用户的内部标记。我们建议
+                仅在用户于 45 天窗口内完成 3 笔以上成功支付、且设备/IP 特征一致后才进行此设置。</li>
+            </ul>
+          </div>
+
+          <div class="subsection">
+            <h3>交易上下文</h3>
+            <ul>
+              <li><code>asset_type</code>：（例如 BTC、USDT）帮助我们监控由流动性驱动的欺诈趋势。</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 7. Fraud Detection -->
+        <section class="doc-section" id="fraud-detection">
+          <h2>欺诈检测</h2>
+          <p>我们的 <a href="https://www.checkout.com/docs/business-operations/prevent-fraud" target="_blank" rel="noopener">欺诈检测</a>
+            解决方案让您能够掌控所处理支付的处置方式。系统会根据您在
+            <strong>控制台 → 欺诈 - 策略页面</strong> 中设置的风险评估规则对支付进行评估。</p>
+          <p>如需演示，请联系我们。</p>
+        </section>
+
+        <!-- 8. Disputes Management -->
+        <section class="doc-section" id="disputes">
+          <h2>争议管理</h2>
+          <p><a href="https://www.checkout.com/docs/business-operations/manage-disputes" target="_blank" rel="noopener">争议</a>
+            （或称拒付）是指客户对某笔交易的有效性提出质疑，并联系其银行（发卡行）
+            以获得退款的情形。</p>
+          <p>争议流程始于持卡人对一笔交易提出质疑。随后，它会经历多个
+            阶段才最终得到解决。请参阅下图。</p>
+          <img class="diagram" src="../assets/disputes_flow.png"
+               alt="争议生命周期：一笔交易被持卡人质疑，并经历争议流程的各个阶段，直至得到解决" loading="lazy" />
+          <p>您可以在 <strong>控制台 → 争议</strong> 中轻松管理争议。</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="../assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — 加密货币和 iGaming 商户接入。</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3" defer></script>
+</body>
+</html>

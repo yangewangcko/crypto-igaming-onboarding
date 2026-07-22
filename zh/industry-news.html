@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>行业动态 — 商户接入 — Checkout.com</title>
+  <meta name="description" content="影响加密货币和 iGaming 商户的监管与卡组织变更 — MiCA 授权及卡组织账户充值交易（AFT）强制要求。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
+        <img src="../assets/logo.svg" alt="Checkout.com" height="26" />
+      </a>
+      <nav class="site-nav" id="nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="preparation.html">准备工作</a>
+        <a href="payin.html">入金</a>
+        <a href="payout.html">出金</a>
+        <a href="fraud-management.html">欺诈管理</a>
+        <a href="faq.html">常见问题</a>
+        <a href="industry-news.html" class="is-active" aria-current="page">行业动态</a>
+        <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">开发文档 ↗</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API 参考 ↗</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Language">
+          <a href="../industry-news.html" hreflang="en" lang="en">EN</a>
+          <span class="is-active">中文</span>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">首页</a> / 行业动态</p>
+        <h1>行业动态</h1>
+        <p>影响加密货币和 iGaming 商户接入及支付处理方式的监管与卡组织变更。以下内容为示例说明 —
+          在采取行动之前，请与您的接入团队确认当前的日期和要求。</p>
+      </div>
+    </div>
+
+    <div class="doc-layout">
+      <!-- In-page navigation -->
+      <nav class="doc-toc" aria-label="On this page">
+        <p class="toc-title">本页内容</p>
+        <ul>
+          <li><a href="#mica">加密货币的 MiCA 授权</a></li>
+          <li><a href="#aft-mandate">卡组织 AFT 强制要求</a></li>
+        </ul>
+      </nav>
+
+      <div class="doc-content">
+        <!-- MiCA -->
+        <section class="doc-section" id="mica">
+          <p class="eyebrow">监管 · 欧盟</p>
+          <h2>加密货币商户的 MiCA 授权要求</h2>
+          <div class="note">
+            <span class="note-tag">加密货币</span>
+            <p>欧盟的《加密资产市场监管法规》（MiCA）为整个欧洲经济区（EEA）的加密资产企业引入了统一的牌照制度。</p>
+          </div>
+          <p>MiCA 是欧盟针对加密资产及其服务企业的综合性监管框架。它以一套统一的规则，取代了此前各国制度各自为政的局面。</p>
+          <h3>变化内容</h3>
+          <ul>
+            <li>针对稳定币 — 资产参考代币（ARTs）和电子货币代币（EMTs） — 的规则自
+              <strong>30 June 2024</strong> 起适用。</li>
+            <li>针对加密资产服务提供商（CASPs）的授权与行为要求自
+              <strong>30 December 2024</strong> 起适用。</li>
+            <li>过渡（"祖父条款"）期允许已在各国法律下运营的企业在获得授权前继续经营 — 最长可至
+              <strong>1 July 2026</strong>，但个别成员国可能会缩短这一期限。</li>
+          </ul>
+          <h3>对您意味着什么</h3>
+          <p>如果您向欧洲经济区（EEA）的客户提供加密货币服务，您需要持有 — 或正在积极申请 —
+            由各国主管机构颁发的 CASP 授权。授权状态、持牌实体和受监管的司法管辖区预计将成为接入尽职调查的一部分。请在申请时准备好您的牌照信息。请参阅<a href="preparation.html">准备工作</a>了解需要收集的文件。</p>
+          <p class="muted">来源：欧洲证券和市场管理局（ESMA） —
+            <a href="https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica" target="_blank" rel="noopener">加密资产市场监管法规（MiCA） ↗</a></p>
+        </section>
+
+        <!-- AFT mandate -->
+        <section class="doc-section" id="aft-mandate">
+          <p class="eyebrow">卡组织 · 全球</p>
+          <h2>账户充值交易（AFT）强制要求</h2>
+          <div class="note note-igaming">
+            <span class="note-tag">加密货币和 iGaming</span>
+            <p>Visa 和 Mastercard 要求，为账户或钱包充值的支付必须被标识为账户充值交易（Account
+              Funding Transactions），并携带增强的付款方和收款方数据。</p>
+          </div>
+          <p>账户充值交易（AFT）是指用于向账户、钱包或余额中充值的卡片支付 — 例如购买加密货币、为电子钱包充值或进行博彩存款。
+            卡组织现在要求对这些交易进行标记和数据丰富化，以使资金流动更加透明。</p>
+          <h3>变化内容</h3>
+          <ul>
+            <li>受影响类别中的交易 — 包括 MCC <strong>6051</strong>（准现金 / 加密货币）和
+              MCC <strong>7995</strong>（博彩） — 必须作为 AFT 提交，而非普通消费。</li>
+            <li>商户必须在请求中传递额外数据，包括付款方的姓名、地址和充值账户参考信息，以及在需要时提供收款方详情。</li>
+            <li>两大卡组织都在分阶段推行该要求；数据不完整或标记错误的交易可能面临更高的拒付率和不合规费用。</li>
+          </ul>
+          <h3>对您意味着什么</h3>
+          <p>请确保您的集成将符合条件的支付标记为 AFT，并提供强制要求的数据字段。
+            Checkout.com 支持 AFT 处理 — 在集成过程中确认好这些字段可以保护您的授权率。请参阅<a href="payin.html">入金</a>了解集成详情，并参阅
+            <a href="faq.html">常见问题</a>中的上线前检查清单获取数据质量方面的指导。</p>
+          <p class="muted">来源：Checkout.com 开发文档 —
+            <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">账户充值交易（Account Funding Transactions） ↗</a></p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="../assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — 加密货币和 iGaming 商户接入。</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3" defer></script>
+</body>
+</html>

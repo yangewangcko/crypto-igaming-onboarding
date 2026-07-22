@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=9" />
+  <link rel="stylesheet" href="css/styles.css?v=10" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -19,7 +19,6 @@
       <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
         <img src="assets/logo.svg" alt="Checkout.com" height="26" />
       </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
       <nav class="site-nav" id="nav" aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="preparation.html">Preparation</a>
@@ -31,6 +30,13 @@
         <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">Documentation ↗</a>
         <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API Reference ↗</a>
       </nav>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Language">
+          <span class="is-active">EN</span>
+          <a href="zh/payin.html" hreflang="zh" lang="zh">&#20013;&#25991;</a>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      </div>
     </div>
   </header>
 
@@ -225,6 +231,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2" defer></script>
+  <script src="js/main.js?v=3" defer></script>
 </body>
 </html>

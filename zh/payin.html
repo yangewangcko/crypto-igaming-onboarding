@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>入金 — 商户接入 — Checkout.com</title>
+  <meta name="description" content="如何使用 Checkout.com 接受支付：集成方式、支持的支付方式，以及在线 Flow 演示。" />
+  <link rel="preconnect" href="https://flow.cko.solutions" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
+        <img src="../assets/logo.svg" alt="Checkout.com" height="26" />
+      </a>
+      <nav class="site-nav" id="nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="preparation.html">准备工作</a>
+        <a href="payin.html" class="is-active" aria-current="page">入金</a>
+        <a href="payout.html">出金</a>
+        <a href="fraud-management.html">欺诈管理</a>
+        <a href="faq.html">常见问题</a>
+        <a href="industry-news.html">行业动态</a>
+        <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">开发文档 ↗</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API 参考 ↗</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Language">
+          <a href="../payin.html" hreflang="en" lang="en">EN</a>
+          <span class="is-active">中文</span>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">首页</a> / 入金</p>
+        <h1>入金</h1>
+        <p>从您的客户处接受支付 — 支付生命周期、集成方式，以及围绕它们的各种工具。</p>
+      </div>
+    </div>
+
+    <div class="doc-layout">
+      <!-- In-page navigation -->
+      <nav class="doc-toc" aria-label="On this page">
+        <p class="toc-title">本页内容</p>
+        <ul>
+          <li><a href="#payment-lifecycle">支付生命周期</a></li>
+          <li><a href="#integration">集成</a>
+            <ul>
+              <li><a href="#flow-remember-me">Flow 与 Remember Me</a></li>
+              <li><a href="#full-card-api">全卡号支付</a></li>
+              <li><a href="#mobile-sdks">移动端 SDK</a></li>
+              <li><a href="#amount-format">金额格式</a></li>
+              <li><a href="#ani">账户名核验（ANI）</a></li>
+              <li><a href="#good-practice">数据优化</a></li>
+              <li><a href="#afts">账户充值交易（AFT）</a></li>
+              <li><a href="#apms">其他交易方式</a></li>
+            </ul>
+          </li>
+          <li><a href="#dashboard">控制台（Dashboard）</a></li>
+          <li><a href="#webhook">异步通知（Webhook）</a></li>
+          <li><a href="#response-code">响应码</a></li>
+        </ul>
+      </nav>
+
+      <div class="doc-content">
+        <!-- Payment Lifecycle -->
+        <section class="doc-section" id="payment-lifecycle">
+          <h2>支付生命周期</h2>
+          <p>一笔支付会依次经过欺诈检查、认证、授权和请款。下图展示了完整流程，以及支付在何处可能被拒付、撤销或标记。</p>
+          <a class="lightbox-link" href="../assets/payment-lifecycle.jpg" aria-label="全屏打开支付生命周期图">
+            <img class="diagram" src="../assets/payment-lifecycle.jpg"
+                 alt="支付生命周期：创建支付 → FD 授权前检查 → 3DS 认证 → 授权 → FD 授权后检查 → 已请款，并包含拒付、撤销和标记分支" loading="lazy" />
+          </a>
+        </section>
+
+        <!-- Integration -->
+        <section class="doc-section" id="integration">
+          <h2>集成</h2>
+          <p>选择适合您 PCI 合规级别和技术方案的集成方式。</p>
+
+          <div class="subsection" id="flow-remember-me">
+            <h3>Flow 与 Remember Me</h3>
+            <p><a href="https://www.checkout.com/docs/payments/accept-payments/accept-a-payment-on-your-website" target="_blank" rel="noopener">Flow</a>
+              是一套预构建、可定制的支付用户界面，您可以将其直接嵌入到您的网站中。
+              它让您只需一次集成，即可通过 Checkout.com 的全球支付方式网络接受支付。</p>
+
+            <p style="margin-top:18px;font-weight:600;">体验在线演示</p>
+            <div class="demo-frame">
+              <iframe src="https://flow.cko.solutions/" title="Checkout.com Flow customization playground"
+                      loading="lazy" referrerpolicy="no-referrer" allow="payment"></iframe>
+            </div>
+            <p style="margin-top:14px;">
+              <a class="btn btn-primary" href="https://www.checkout.com/docs/assets/downloads/flow-template.zip" download>下载示例代码（.zip）</a>
+            </p>
+
+            <p style="margin-top:24px;"><a href="https://www.checkout.com/docs/payments/accept-payments/accept-a-payment-on-your-website/extend-your-flow-integration/enable-remember-me" target="_blank" rel="noopener">Remember Me</a>
+              功能让客户在结账时保存其卡片信息。当该客户下次在任何已启用 Remember Me 的商户处购物时，
+              我们会展示其已保存的卡片信息。</p>
+          </div>
+
+          <div class="subsection" id="full-card-api">
+            <h3>全卡号支付</h3>
+            <p>如果您的 PCI 合规级别为 SAQ D，您可以使用
+              <a href="https://www.checkout.com/docs/payments/accept-payments/accept-a-payment-using-the-payments-api#Request_a_payment_with_full_card_details" target="_blank" rel="noopener">卡片的完整信息</a>发起支付请求。</p>
+            <p>Checkout.com 提供一系列
+              <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API</a>，
+              让您能够处理和管理支付。</p>
+          </div>
+
+          <div class="subsection" id="mobile-sdks">
+            <h3>移动端 SDK</h3>
+            <p>Checkout.com 为 Android 和 iOS 提供后端和
+              <a href="https://www.checkout.com/docs/developer-resources/sdks" target="_blank" rel="noopener">移动端 SDK</a>。</p>
+          </div>
+
+          <div class="subsection" id="amount-format">
+            <h3>金额格式</h3>
+            <p>我们的支付网关通过收款请求中包含的金额和货币来确定扣款金额。支付请求中的金额字段必须是
+              <strong>非零正整数 — 不含小数</strong>。详情请见
+              <a href="https://www.checkout.com/docs/payments/accept-payments/format-the-amount-value" target="_blank" rel="noopener">此处</a>。</p>
+          </div>
+
+          <div class="subsection" id="ani">
+            <h3>账户名核验（ANI）</h3>
+            <p>为降低欺诈风险，您可以使用
+              <a href="https://www.checkout.com/docs/payments/authenticate-payments/verify-a-card#Request_an_Account_Name_Inquiry" target="_blank" rel="noopener">账户名核验（ANI）</a>，
+              将持卡人姓名与其发卡银行留存的姓名进行核验。
+              ANI 是一项独立于金融交易运行的卡片验证服务。</p>
+          </div>
+
+          <div class="subsection" id="good-practice">
+            <h3>数据优化</h3>
+            <p>为提升授权通过率并加强风险控制，Checkout.com 要求商户在提交支付和/或支付会话请求时提供以下
+              信息：</p>
+            <ul class="field-list">
+              <li>持卡人姓名</li>
+              <li><code>customer.email</code></li>
+              <li><code>customer.name</code></li>
+              <li><code>customer.phone</code> <span class="muted">（建议提供）</span></li>
+              <li><code>billing.address.country</code></li>
+              <li><code>billing.address.address_line1</code></li>
+              <li><code>billing.address.city</code></li>
+              <li><code>billing.address.state</code> <span class="muted">（美国需提供）</span></li>
+              <li><code>billing.address.zip</code> <span class="muted">（建议提供）</span></li>
+              <li><code>risk.device.network.ipv4</code> 或 <code>risk.device.network.ipv6</code></li>
+              <li><code>risk.device_session_id</code></li>
+            </ul>
+          </div>
+
+          <div class="subsection" id="afts">
+            <h3>账户充值交易（AFT）</h3>
+            <p>卡组织（Visa 与 Mastercard）有强制要求，确保具有特定 MCC 的收单机构/商户
+              迁移至 AFT。CKO 将协助商户向卡组织申请开通 AFT。要将交易标记为 AFT，
+              请参照
+              <a href="https://www.checkout.com/docs/payments/manage-payments/perform-an-account-funding-transaction" target="_blank" rel="noopener">此处</a>的文档。</p>
+          </div>
+
+          <div class="subsection" id="apms">
+            <h3>其他交易方式</h3>
+            <p>Checkout.com 提供丰富多样的全球替代支付方式（APM），例如
+              <a href="https://www.checkout.com/docs/payments/add-payment-methods/apple-pay" target="_blank" rel="noopener">Apple Pay</a>、
+              <a href="https://www.checkout.com/docs/payments/add-payment-methods/google-pay" target="_blank" rel="noopener">Google Pay</a>
+              以及本地支付方式等。如需了解更多信息，请联系我们的团队。</p>
+          </div>
+        </section>
+
+        <!-- Dashboard -->
+        <section class="doc-section" id="dashboard">
+          <h2>控制台（Dashboard）</h2>
+          <p><a href="https://www.checkout.com/docs/business-operations/use-the-dashboard" target="_blank" rel="noopener">控制台</a>
+            是您监控和分析所有支付的统一入口。在这里可以获取您的关键绩效指标、支付
+            历史、详情和分析 — 一切尽在一处。您还可以在控制台中管理争议、报告、结算和风险
+            策略。</p>
+        </section>
+
+        <!-- Webhook -->
+        <section class="doc-section" id="webhook">
+          <h2>异步通知（Webhook）</h2>
+          <p>当与您账户相关的事件发生时，Checkout.com 可以向您发送自动通知。您可以针对所有事件类型，使用
+            <a href="https://www.checkout.com/docs/developer-resources/event-notifications/receive-webhooks" target="_blank" rel="noopener">Webhook</a>
+            或
+            <a href="https://www.checkout.com/docs/developer-resources/event-notifications/receive-events-in-eventbridge" target="_blank" rel="noopener">EventBridge</a>
+            来接收通知。</p>
+        </section>
+
+        <!-- Response Code -->
+        <section class="doc-section" id="response-code">
+          <h2>响应码</h2>
+          <p><a href="https://www.checkout.com/docs/developer-resources/codes/api-response-codes" target="_blank" rel="noopener">响应码</a>
+            是一个五位数字代码，用于表示请求的状态。以下是四种类型：</p>
+          <div class="rc-list">
+            <div class="rc approved">
+              <span class="rc-code">1xxxx</span>
+              <div><span class="rc-title">已批准</span><p>请求成功。</p></div>
+            </div>
+            <div class="rc soft">
+              <span class="rc-code">2xxxx</span>
+              <div><span class="rc-title">软拒付</span><p>请求被拒绝，通常由发卡行拒绝，但后续尝试可能会成功。</p></div>
+            </div>
+            <div class="rc hard">
+              <span class="rc-code">3xxxx</span>
+              <div><span class="rc-title">硬拒付</span><p>请求被拒绝。大多数硬拒付需要发卡行或持卡人先解决未决问题，才能进行后续尝试。</p></div>
+            </div>
+            <div class="rc risk">
+              <span class="rc-code">4xxxx</span>
+              <div><span class="rc-title">风险响应</span><p>请求触发了风险响应。响应的状态取决于您风险设置中指定的操作。被欺诈检测拒绝。</p></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="../assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — 加密货币和 iGaming 商户接入。</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3" defer></script>
+</body>
+</html>

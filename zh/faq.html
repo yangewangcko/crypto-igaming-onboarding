@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>常见问题 — 商户接入 — Checkout.com</title>
+  <meta name="description" content="关于加密货币和 iGaming 商户接入 Checkout.com 的常见问题解答。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
+</head>
+<body>
+  <a class="skip-link" href="#main">跳转到主要内容</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="https://www.checkout.com" target="_blank" rel="noopener" aria-label="Checkout.com">
+        <img src="../assets/logo.svg" alt="Checkout.com" height="26" />
+      </a>
+      <nav class="site-nav" id="nav" aria-label="主导航">
+        <a href="index.html">首页</a>
+        <a href="preparation.html">准备工作</a>
+        <a href="payin.html">入金</a>
+        <a href="payout.html">出金</a>
+        <a href="fraud-management.html">欺诈管理</a>
+        <a href="faq.html" class="is-active" aria-current="page">常见问题</a>
+        <a href="industry-news.html">行业动态</a>
+        <a href="https://www.checkout.com/docs" target="_blank" rel="noopener">开发文档 ↗</a>
+        <a href="https://api-reference.checkout.com/" target="_blank" rel="noopener">API 参考 ↗</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch" aria-label="Language">
+          <a href="../faq.html" hreflang="en" lang="en">EN</a>
+          <span class="is-active">中文</span>
+        </div>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav">菜单</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="page-head">
+      <div class="container">
+        <p class="breadcrumb"><a href="index.html">首页</a> / 常见问题</p>
+        <h1>常见问题</h1>
+        <p>商户在接入过程中最常问到的问题解答。</p>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="faq">
+          <details>
+            <summary>如何查看交易状态以及失败原因？</summary>
+            <p>您可以在两个地方查看 — 控制台和 API。</p>
+            <p><strong>控制台：</strong>打开支付页面，按支付 ID 搜索。将鼠标悬停在
+              <a href="https://www.checkout.com/docs/developer-resources/codes/api-response-codes" target="_blank" rel="noopener">响应码</a>
+              上即可查看状态，打开支付详情页面可查看完整明细。</p>
+            <p><strong>API：</strong>每次支付请求的 API 响应中都会返回相同的响应码。</p>
+          </details>
+          <details>
+            <summary>我的财务团队应如何与 Checkout.com 对账？</summary>
+            <p>请遵循我们的
+              <a href="https://www.checkout.com/docs/funds-management/reconcile-with-checkout-com" target="_blank" rel="noopener">对账指南</a>，
+              其中详细说明了如何将结算和付款与您已处理的支付进行匹配。</p>
+          </details>
+          <details>
+            <summary>如何提交支持工单？</summary>
+            <p>登录控制台，点击右上角的问号图标，然后选择
+              <strong>Request support（请求支持）</strong>。</p>
+          </details>
+          <details>
+            <summary>如何创建 API 密钥？</summary>
+            <p>登录控制台，在左侧菜单栏选择 <em>Developers（开发者）</em> 板块，点击
+              <em>Keys（密钥）</em>，然后选择 <strong>创建新密钥</strong>。详情请参阅
+              <a href="https://www.checkout.com/docs/business-operations/use-the-dashboard/developers" target="_blank" rel="noopener">开发者文档</a>。</p>
+          </details>
+          <details>
+            <summary>如何设置单点登录（SSO）？</summary>
+            <p>您可以在控制台中为您的团队配置 SSO — 请遵循
+              <a href="https://www.checkout.com/docs/business-operations/use-the-dashboard/single-sign-on" target="_blank" rel="noopener">SSO 设置指南</a>。</p>
+          </details>
+          <details>
+            <summary>如何查看和更新我的企业信息？</summary>
+            <p>您可以直接在控制台中查看和更新您的企业信息。请参阅
+              <a href="https://www.checkout.com/docs/business-operations/use-the-dashboard/manage-business-details" target="_blank" rel="noopener">管理企业信息</a>。</p>
+          </details>
+          <details>
+            <summary>如何获取报告？</summary>
+            <p>Checkout.com 提供一系列报告，助您开展业务运营并获取洞察。您可以通过四种方式
+              获取这些报告：</p>
+            <ul>
+              <li>在控制台中按需或按计划生成并下载报告。</li>
+              <li>使用报告 API 以编程方式获取报告。</li>
+              <li>通过安全文件传输协议（SFTP）访问报告。</li>
+              <li>通过 webhook 接收定期报告。</li>
+            </ul>
+            <p>设置说明请参阅 <a href="https://www.checkout.com/docs/business-operations/retrieve-reports" target="_blank" rel="noopener">获取报告</a>。</p>
+          </details>
+          <details>
+            <summary>我可以设置定期付款吗？</summary>
+            <p>可以。您可以使用客户已存储的卡片信息对其进行定期扣款 — 请参阅
+              <a href="https://www.checkout.com/docs/payments/accept-payments/pay-with-stored-card-details/recurring-payments-with-stored-card-details" target="_blank" rel="noopener">使用已存储卡片信息的定期付款</a>。</p>
+          </details>
+          <details>
+            <summary>我的上线前检查清单应包含哪些内容？</summary>
+            <p>在开启实时流量之前，请确认您的技术集成和配置已达到生产就绪状态：</p>
+            <ul class="checks">
+              <li><strong>激活控制台：</strong>确保您的控制台已激活，并且团队中相关人员拥有访问权限。</li>
+              <li><strong>更换 API 密钥和端点：</strong>将您的环境配置从沙盒切换到生产环境。用控制台中生成的正式生产环境密钥替换所有测试用的公钥和密钥。</li>
+              <li><strong>配置正式环境 webhook：</strong>在您的正式环境中重新创建所有系统关键的 webhook。确保您的服务器监听诸如 <code>card_verified</code>、<code>payment_approved</code>、<code>payment_declined</code>、<code>payment_captured</code>、<code>payment_refunded</code> 和 <code>payment_voided</code> 等实时事件，并确保您的正式端点已加密且经过认证。</li>
+              <li><strong>启用 3D Secure（3DS）和欺诈规则：</strong>在控制台中检查您的 3DS 规则。确认在强制要求强客户认证（SCA）的地区（例如欧洲）已启用并正确配置 SCA，以避免发卡行立即拒付。</li>
+              <li><strong>配置报告方式：</strong>为财务对账设置您的报告渠道（控制台、API 和 SFTP）。</li>
+              <li><strong>确保良好的数据质量：</strong>确认每次请求都传递了足够的信息以保证数据质量，并在适用情况下满足 AFT 强制要求（可选）。</li>
+              <li><strong>运行生产环境冒烟测试：</strong>
+                <ol>
+                  <li><strong>处理一笔真实交易。</strong>使用一张真实的个人或企业卡片购买一件低价的实时商品。请勿使用沙盒卡片 — 它们在生产环境中会立即失败。</li>
+                  <li><strong>验证 webhook 响应。</strong>监控您的后端日志，确认您的系统捕获到实时事件，并将订单状态从“待处理”变更为“已支付”。</li>
+                  <li><strong>触发部分或全额退款。</strong>从您的平台后端或控制台发起退款，以确认反向支付流程能够端到端正常运作。</li>
+                </ol>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="../assets/logo-white.svg" alt="Checkout.com" height="24" />
+      <p>© Checkout.com — 加密货币和 iGaming 商户接入。</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3" defer></script>
+</body>
+</html>

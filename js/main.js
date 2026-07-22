@@ -25,20 +25,23 @@
     });
   }
 
+  var zh = (document.documentElement.lang || "").toLowerCase().indexOf("zh") === 0;
+  var COPIED = zh ? "已复制！" : "Copied!";
+  var PRESS = zh ? "请按 ⌘C" : "Press ⌘C";
   document.querySelectorAll(".tc-email, .copy-chip").forEach(function (btn) {
     var email = btn.getAttribute("data-email") || btn.textContent.trim();
     var label = btn.querySelector(".tc-copy, .cc-copy");
-    var original = label ? label.textContent : "Copy";
+    var original = label ? label.textContent : (zh ? "复制" : "Copy");
     btn.addEventListener("click", function () {
       copy(email).then(function () {
         btn.classList.add("copied");
-        if (label) label.textContent = "Copied!";
+        if (label) label.textContent = COPIED;
         setTimeout(function () {
           btn.classList.remove("copied");
           if (label) label.textContent = original;
         }, 1600);
       }).catch(function () {
-        if (label) label.textContent = "Press ⌘C";
+        if (label) label.textContent = PRESS;
       });
     });
   });
