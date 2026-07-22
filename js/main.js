@@ -67,7 +67,7 @@
       a.addEventListener("click", function (e) {
         e.preventDefault();
         var img = a.querySelector("img");
-        lbImg.src = a.getAttribute("href");
+        lbImg.src = a.getAttribute("href") || (img ? img.getAttribute("src") : "");
         lbImg.alt = img ? img.getAttribute("alt") || "" : "";
         overlay.classList.add("open");
         document.body.style.overflow = "hidden";
